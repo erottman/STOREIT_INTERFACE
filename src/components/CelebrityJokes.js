@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import Nav from './Nav';
+import Header from './Header';
 import { getFacilityData } from '../utils/storeit-api';
 
 class CelebrityJokes extends Component {
@@ -26,7 +26,7 @@ class CelebrityJokes extends Component {
 
     return (
       <div>
-        <Nav />
+        <Header />
         <h3 className="text-center">Privileged Chuck Norris Celebrity Jokes</h3>
         <hr/>
 

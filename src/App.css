@@ -27,3 +27,11 @@
 .log {
   margin: 5px 10px 0 0;
 }
+
+.home-image {
+  background-image: url('./images/boxes.png');
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}

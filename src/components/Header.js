@@ -17,10 +17,10 @@ class Header extends Component {
             <Nav>
             </Nav>
             <Nav pullRight>
-              <NavItem><Link className="nav-link" to="/products">Shop</Link></NavItem>
+              <NavItem><Link className="nav-link" to="/facilities">Facilities</Link></NavItem>
               {this.props.isLoggedIn === true ? <NavItem><Link className="nav-link" to="/login">LogOut</Link></NavItem>
               : <NavItem><Link className="nav-link" to="/login">LogIn</Link></NavItem>}
-              <NavItem><Link className="nav-link" to="/shoppingcart"><Glyphicon glyph="shopping-cart"/>{this.props.numberOfItems}</Link></NavItem>
+              <NavItem><Link className="nav-link" to="/shoppingcart"><Glyphicon glyph="search"/>{this.props.numberOfItems}</Link></NavItem>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import Nav from './Nav';
+import Header from './Header';
 import { getUserData } from '../utils/storeit-api';
 
 
@@ -27,7 +27,7 @@ class FoodJokes extends Component {
 
     return (
       <div>
-        <Nav />
+        <Header />
         <h3 className="text-center">Chuck Norris Food Jokes</h3>
         <hr/>
 
