@@ -32,12 +32,13 @@ class Login extends Component {
       password: this.state.password
     }
 
-    axios.post('/api/users/login', user)
+    axios.post('http://localhost:3000/api/users/login', user)
     .then(response => {
       if (response.data.error){
+        console.log(user);
         alert("Username or password does not exist")
       } else {
-        browserHistory.push('/products')
+        browserHistory.push('/')
       }
       this.props.addUser(response.data)
     })
