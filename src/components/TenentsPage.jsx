@@ -16,10 +16,10 @@ class TenentPage extends Component {
   );
 
   const profileManage = (
-    <ListGroup className="profileManage">
-      <ListGroupItem className="purple" href="/facilities">Manage Storage</ListGroupItem>
-      <ListGroupItem className="purple" href="/units">Edit Profile</ListGroupItem>
-    </ListGroup>
+    <button>
+    <p><Button bsStyle="primary">Manage Storage</Button>&nbsp;</p>
+    <p><Button bsStyle="primary">Edit Profile</Button>&nbsp;</p>
+    </button>
 );
 
     return (
