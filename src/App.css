@@ -71,7 +71,7 @@ a.nav-link:hover {
 
 .home-image {
   background-image: url('./images/boxes.png');
-  height: 50%;
+  height: 30%;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -124,6 +124,11 @@ a.nav-link:hover {
 }
 
 
-.accordian {
-  margin-top: 100px;
+.profileOverview {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.profileManage {
+  text-align: center;
 }
