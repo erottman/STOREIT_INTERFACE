@@ -15,10 +15,10 @@ class TenentPage extends Component {
     </ListGroup>
   );
 
-  const profileManage = (
+  const profilebutton = (
     <button>
-    <p><Button bsStyle="primary">Manage Storage</Button>&nbsp;</p>
-    <p><Button bsStyle="primary">Edit Profile</Button>&nbsp;</p>
+    <p><Button className="profilebutton" href="/login">Manage Storage</Button>&nbsp;</p>
+    <p><Button className="profilebutton" href="/editprofile">Edit Profile</Button>&nbsp;</p>
     </button>
 );
 
@@ -44,7 +44,7 @@ class TenentPage extends Component {
   <Grid >
     <Row>
       <Col xs={12}  md={12}>
-      {profileManage}
+      {profilebutton}
     </Col>
   </Row>
 </Grid>

@@ -129,8 +129,9 @@ a.nav-link:hover {
   text-align: center;
 }
 
-.profileManage {
-  text-align: center;
+.profilebutton {
+  background-color: #2D3E8C;
+  color: white;
 }
 
 .purple {
