@@ -5,6 +5,7 @@ import App from './components/App'
 import TenentsPage from './components/TenentsPage'
 import Login from './components/Login'
 import FacilityPage from './components/FacilityPage'
+import BoxesPage from './components/BoxesPage'
 
 
 ReactDOM.render((
@@ -14,6 +15,7 @@ ReactDOM.render((
       <Route path ="/login" component={Login}/>
       <Route path ="/tenents" component={TenentsPage}/>
       <Route path ="/facility" component={FacilityPage}/>
+      <Route path ="/boxes" component={BoxesPage}/>
     </Route>
     </Router>
   </div>)
