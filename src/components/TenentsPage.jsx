@@ -17,13 +17,13 @@ class TenentPage extends Component {
 
   const profileManage = (
     <ListGroup className="profileManage">
-      <ListGroupItem href="/facilities">Manage Storage</ListGroupItem>
-      <ListGroupItem href="/units">Edit Profile</ListGroupItem>
+      <ListGroupItem className="purple" href="/facilities">Manage Storage</ListGroupItem>
+      <ListGroupItem className="purple" href="/units">Edit Profile</ListGroupItem>
     </ListGroup>
 );
 
     return (
-      <div>
+      <div className="loginuser">
       <h1>Welcome Erica</h1>
       <div>
       <Grid>
@@ -41,8 +41,14 @@ class TenentPage extends Component {
       </Col>
     </Row>
   </Grid>
-      <div>{profileManage}</div>
-      </div>
+  <Grid >
+    <Row>
+      <Col xs={12}  md={12}>
+      {profileManage}
+    </Col>
+  </Row>
+</Grid>
+</div>
     )
   }
 }

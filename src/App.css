@@ -132,3 +132,11 @@ a.nav-link:hover {
 .profileManage {
   text-align: center;
 }
+
+.purple {
+  background-color: #c0b5f7;
+}
+
+.loginuser {
+  text-align: center;
+}
