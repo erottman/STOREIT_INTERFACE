@@ -123,24 +123,7 @@ a.nav-link:hover {
   margin-top: 20px;
 }
 
-.prod-desc {
-  text-align: justify;
-}
 
-.prod-qty {
-  display: inline-block;
-  width: 20%;
-}
-
-.cart-table {
-  background-color: #fff;
-}
-
-.prod-add-btn {
-  display: inline-block;
-  width: 30%;
-}
-
-.single-prod-qty {
-  margin-right: 10px;
+.accordian {
+  margin-top: 100px;
 }
