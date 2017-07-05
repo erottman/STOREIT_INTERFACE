@@ -6,6 +6,7 @@ import TenentsPage from './components/TenentsPage'
 import Login from './components/Login'
 import FacilityPage from './components/FacilityPage'
 import BoxesPage from './components/BoxesPage'
+import Search from './components/Search'
 
 
 ReactDOM.render((
