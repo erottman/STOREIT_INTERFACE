@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import { ListGroup, ListGroupItem,Accordion, Panel, Image, DropdownButton, Grid, Row, Col, Thumbnail, Button,FormGroup , ControlLabel, FormControl } from 'react-bootstrap'
+import { ListGroup, ListGroupItem, Panel, Image, DropdownButton, Grid, Row, Col, Thumbnail, Button,FormGroup , ControlLabel, FormControl } from 'react-bootstrap'
 import '../App.css'
 
 
@@ -9,7 +9,7 @@ class TenentPage extends Component {
 
   const profileOverview = (
     <ListGroup className="profileOverview">
-      <ListGroupItem href="/facilities">West Seattle Public Storage </ListGroupItem>
+      <ListGroupItem href="/facility">West Seattle Public Storage </ListGroupItem>
       <ListGroupItem href="/boxes">Storage Unit: 303  |   Total Boxes:  42</ListGroupItem>
       <ListGroupItem href="/items">Total Items: 324     |   Total Value: $8598</ListGroupItem>
     </ListGroup>
