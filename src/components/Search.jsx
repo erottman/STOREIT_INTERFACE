@@ -29,16 +29,20 @@ const Search = React.createClass({
           controlId="formBasicText"
           validationState={this.getValidationState()}
         >
-          <ControlLabel>Search for a Box </ControlLabel>
+          <ControlLabel>Search for a Box Identifier </ControlLabel>
           <FormControl
             type="text"
             value={this.state.value}
-            placeholder="Enter Box Number"
+            placeholder="box2"
             onChange={this.handleChange}
           />
           <FormControl.Feedback />
           <HelpBlock>No longer than 10 characters</HelpBlock>
         </FormGroup>
+
+        <Button type="submit">
+          Submit
+        </Button>
       </form>
     );
   }

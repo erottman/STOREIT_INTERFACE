@@ -12,7 +12,7 @@ class BoxesPage extends Component {
     const thumbnailInstance = (
     <Grid>
       <Row>
-      <Col xs={12} md={6}>
+      <Col xs={12} sm={12}>
         <Thumbnail src="http://www.iconarchive.com/download/i55050/mymovingreviews/3d-movers/boxes-brown.ico" alt="260x260">
           <h3>Manage Storage</h3>
           <p>Add boxes with item details and storage location</p>
