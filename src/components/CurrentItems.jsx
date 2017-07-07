@@ -24,7 +24,7 @@ const listgroupInstance = (
       <tbody>
         <tr>
           <td>1</td>
-          <td>Toaster</td>
+          <td>Toaster Oven</td>
           <td>1</td>
           <td>$35.99</td>
         </tr>

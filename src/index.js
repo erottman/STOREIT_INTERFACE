@@ -7,6 +7,7 @@ import Login from './components/Login'
 import FacilityPage from './components/FacilityPage'
 import BoxesPage from './components/BoxesPage'
 import ItemsPage from './components/ItemsPage'
+import Item from './components/Item'
 
 
 ReactDOM.render((
@@ -18,6 +19,7 @@ ReactDOM.render((
       <Route path ="/facility" component={FacilityPage}/>
       <Route path ="/boxes" component={BoxesPage}/>
       <Route path ="/items" component={ItemsPage}/>
+      <Route path ="/item" component={Item}/>
     </Route>
     </Router>
   </div>)
