@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { Accordion, ListGroup, ListGroupItem, Panel, Image, DropdownButton, Grid, Row, Col, Thumbnail, Button,FormGroup , ControlLabel, FormControl } from 'react-bootstrap'
 import '../App.css'
-import Search from './Search'
-import Add from './Add'
-import Edit from './Edit'
+import CurrentItems from './CurrentItems'
+import AddItems from './AddItems'
 
 
 class ItemsPage extends Component {
@@ -14,11 +13,11 @@ class ItemsPage extends Component {
     <Grid>
       <Row>
       <Col xs={12} sm={12}>
-        <Thumbnail src="/Users/erica/galvanize/capstone/storeit_interface/src/images/manageboxes.png" alt="260x260">
-          <h3>Manage Storage</h3>
-          <p>Add boxes with item details and storage location</p>
-          <p>Easily look-up boxes to view and edit item details</p>
-          <p>Boxes= 48  Items=  348  Value= $8567</p>
+        <Thumbnail src="http://www.rw-designer.com/icon-image/834-256x256x32.png" alt="260x260">
+          <h3>Manage Items</h3>
+          <p>View, Add, and Delete Current Items in a Box</p>
+          <p>Easily look-up an items Details and Value</p>
+          <p>Boxe= 2  Items=  4  Value= $150</p>
         </Thumbnail>
       </Col>
       </Row>
@@ -27,14 +26,11 @@ class ItemsPage extends Component {
 
   const accordionInstance = (
   <Accordion>
-    <Panel header="Manage Items" eventKey="1">
-    <Search />
+    <Panel header="Current Items" eventKey="1">
+    <CurrentItems />
     </Panel>
-    <Panel header="Add Boxes" eventKey="2">
-    <Add />
-    </Panel>
-    <Panel header="Edit or Delete Boxes" eventKey="3">
-    <Edit />
+    <Panel header="Add Items" eventKey="2">
+    <AddItems />
     </Panel>
   </Accordion>
 );
