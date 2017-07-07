@@ -141,3 +141,7 @@ a.nav-link:hover {
 .loginuser {
   text-align: center;
 }
+
+.storage-image {
+  background-image: url('./images/manageboxes.png');
+}

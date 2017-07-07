@@ -29,7 +29,7 @@ const Search = React.createClass({
           controlId="formBasicText"
           validationState={this.getValidationState()}
         >
-          <ControlLabel>Search for a Box Identifier </ControlLabel>
+          <ControlLabel>Box Identifier </ControlLabel>
           <FormControl
             type="text"
             value={this.state.value}
@@ -41,7 +41,7 @@ const Search = React.createClass({
         </FormGroup>
 
         <Button type="submit">
-          Submit
+          View/Add Items
         </Button>
       </form>
     );

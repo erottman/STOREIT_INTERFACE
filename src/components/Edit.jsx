@@ -4,7 +4,7 @@ import { Checkbox, Form, inline, HelpBlock, InputGroup, Image, DropdownButton, G
 import '../App.css'
 
 
-const Add = React.createClass({
+const Edit = React.createClass({
   getInitialState() {
     return {
       value: ''
@@ -37,8 +37,17 @@ const Add = React.createClass({
       onChange={this.handleChange}
     />
     <FormControl.Feedback />
-    <HelpBlock>No longer than 10 characters</HelpBlock>
+    <HelpBlock>Click Edit Button to Prefill Info </HelpBlock>
+    <Button type="submit">
+         Edit Box
+       </Button>
+    <Button type="submit">
+         Delete Box
+    </Button>
   </FormGroup>
+
+
+
 
   <FormGroup
     controlId="formBasicText"
@@ -48,7 +57,6 @@ const Add = React.createClass({
     <FormControl
       type="text"
       value={this.state.value}
-      placeholder="example 203"
       onChange={this.handleChange}
     />
     <FormControl.Feedback />
@@ -60,7 +68,7 @@ const Add = React.createClass({
      <InputGroup.Button>
        <Button>Packed Date</Button>
      </InputGroup.Button>
-     <FormControl type="text" placeholder="05-01-17" />
+     <FormControl type="text" />
    </InputGroup>
  </FormGroup>
 
@@ -69,7 +77,7 @@ const Add = React.createClass({
     <InputGroup.Button>
       <Button>Stored Date</Button>
     </InputGroup.Button>
-    <FormControl type="text" placeholder="05-05-17"/>
+    <FormControl type="text" />
   </InputGroup>
  </FormGroup>
 
@@ -105,10 +113,13 @@ const Add = React.createClass({
 
    <FormGroup controlId="formControlsTextarea">
    <ControlLabel>Description</ControlLabel>
-   <FormControl componentClass="textarea" placeholder="description of items to be packed in this box" />
+   <FormControl componentClass="textarea"  />
  </FormGroup>
  <Button type="submit">
-      Add Items
+      Update Box
+    </Button>
+    <Button type="submit">
+      Delete Box
     </Button>
 
 </form>
@@ -118,4 +129,4 @@ const Add = React.createClass({
 });
 
 
-export default Add
+export default Edit
