@@ -6,7 +6,7 @@ import TenentsPage from './components/TenentsPage'
 import Login from './components/Login'
 import FacilityPage from './components/FacilityPage'
 import BoxesPage from './components/BoxesPage'
-
+import ItemsPage from './components/ItemsPage'
 
 
 ReactDOM.render((
@@ -17,6 +17,7 @@ ReactDOM.render((
       <Route path ="/tenents" component={TenentsPage}/>
       <Route path ="/facility" component={FacilityPage}/>
       <Route path ="/boxes" component={BoxesPage}/>
+      <Route path ="/items" component={ItemsPage}/>
     </Route>
     </Router>
   </div>)
