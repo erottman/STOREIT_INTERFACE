@@ -14,7 +14,6 @@ ReactDOM.render((
   <div>
     <Router history={browserHistory}>
       <Route path ="/" component={App}>
-      <Route path ="/login" component={Login}/>
       <Route path ="/tenents" component={TenentsPage}/>
       <Route path ="/facility" component={FacilityPage}/>
       <Route path ="/boxes" component={BoxesPage}/>

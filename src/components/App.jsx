@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Redirect, browserHistory } from 'react-router'
 import '../App.css'
 import Header from './Header'
-import Main from './Main'
+import LandingPage from './LandingPage'
 
 class App extends Component {
   constructor(props) {
@@ -57,7 +57,7 @@ class App extends Component {
     const homepage = (
       <div>
       <div><Header/></div>
-      <div><Main /></div>
+      <div><LandingPage /></div>
     </div>
     )
 

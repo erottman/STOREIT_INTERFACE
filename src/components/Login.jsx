@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import '../App.css'
-import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap'
+import { Col, Checkbox, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap'
 import { browserHistory } from 'react-router'
 import axios from 'axios'
 
@@ -38,7 +38,7 @@ class Login extends Component {
         console.log(user);
         alert("Username or password does not exist")
       } else {
-        browserHistory.push('/')
+        browserHistory.push('/tenents')
       }
       this.props.addUser(response.data)
     })
@@ -69,6 +69,11 @@ class Login extends Component {
             placeholder="password"
             onChange={this.handlePasswordChange}
           />
+          <FormGroup>
+            <Col smOffset={2} sm={10}>
+              <Checkbox>Remember me</Checkbox>
+            </Col>
+          </FormGroup>
           <Button bsStyle="primary" type="submit" onClick={this.handleSubmit}>
             Login
           </Button>
