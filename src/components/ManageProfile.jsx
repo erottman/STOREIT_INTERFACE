@@ -2,25 +2,41 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { Addon, Checkbox, Form, inline, HelpBlock, InputGroup, Image, DropdownButton, Grid, Row, Col, Thumbnail, Button,FormGroup , ControlLabel, FormControl } from 'react-bootstrap'
 import '../App.css'
+import axios from 'axios'
 
 
-const ManageProfile = React.createClass({
-  getInitialState() {
-    return {
-      value: ''
-    };
-  },
+class ManageProfile extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      tenent: [],
+      value: '',
+    }
+  }
+
+  componentWillMount() {
+   //axios.get(`/api/users/${this.props.params.id}`)
+   axios.get('http://localhost:3000/api/tenents/2')
+      .then(response => {
+        this.setState({
+          tenent : response.data[0],
+        })
+      })
+      .catch(err => {
+      })
+    }
+
 
   getValidationState() {
     const length = this.state.value.length;
     if (length > 10) return 'success';
     else if (length > 5) return 'warning';
     else if (length > 0) return 'error';
-  },
+  }
 
   handleChange(e) {
     this.setState({ value: e.target.value });
-  },
+  }
 
   render() {
     return (
@@ -30,57 +46,127 @@ const ManageProfile = React.createClass({
     controlId="formBasicText"
     validationState={this.getValidationState()}
   >
-    <ControlLabel>Item Name</ControlLabel>
+    <ControlLabel>First Name</ControlLabel>
     <FormControl
       type="text"
       value={this.state.value}
-      placeholder="example 203"
+      placeholder={this.state.tenent.first_name}
       onChange={this.handleChange}
     />
     <FormControl.Feedback />
-    <HelpBlock>Please enter number only</HelpBlock>
+    <HelpBlock>No longer than 10 Characters</HelpBlock>
   </FormGroup>
 
-  <FormGroup controlId="formControlsSelect">
-     <ControlLabel>Quantity</ControlLabel>
-     <FormControl componentClass="select" placeholder="select">
-       <option value="one">1</option>
-       <option value="two">2</option>
-       <option value="three">3</option>
-       <option value="four">4</option>
-       <option value="five">5</option>
-       <option value="six">6</option>
-       <option value="seven">7</option>
-       <option value="eight">8</option>
-       <option value="nine">9</option>
-       <option value="ten">10</option>
-       <option value="eleven">11</option>
-       <option value="twelve">12</option>
-       <option value="thirteen">13</option>
-       <option value="fourteen">14</option>
-        <option value="fifeteen">15</option>
-     </FormControl>
-   </FormGroup>
-
- <FormGroup>
-    <InputGroup>
-      <InputGroup.Addon>Value $</InputGroup.Addon>
-      <FormControl type="text" />
-      <InputGroup.Addon>.00</InputGroup.Addon>
-    </InputGroup>
+  <FormGroup
+    controlId="formBasicText"
+    validationState={this.getValidationState()}
+  >
+    <ControlLabel>Last Name</ControlLabel>
+    <FormControl
+      type="text"
+      value={this.state.value}
+      placeholder={this.state.tenent.last_name}
+      onChange={this.handleChange}
+    />
+    <FormControl.Feedback />
+    <HelpBlock>No longer than 10 Characters</HelpBlock>
   </FormGroup>
 
+  <FormGroup
+    controlId="formBasicText"
+    validationState={this.getValidationState()}
+  >
+    <ControlLabel>Address Line 1</ControlLabel>
+    <FormControl
+      type="text"
+      value={this.state.value}
+      placeholder={this.state.tenent.address_line_1}
+      onChange={this.handleChange}
+    />
+  </FormGroup>
 
-   <FormGroup controlId="formControlsTextarea">
-   <ControlLabel>Description</ControlLabel>
-   <FormControl componentClass="textarea" placeholder="description of items to be packed in this box" />
- </FormGroup>
+  <FormGroup
+    controlId="formBasicText"
+    validationState={this.getValidationState()}
+  >
+    <ControlLabel>Address Line 2</ControlLabel>
+    <FormControl
+      type="text"
+      value={this.state.value}
+      placeholder={this.state.tenent.address_line_2}
+      onChange={this.handleChange}
+    />
+  </FormGroup>
+
+  <FormGroup>
+      <InputGroup>
+        <InputGroup.Addon>City </InputGroup.Addon>
+        <FormControl type="text"
+          value={this.state.value}
+          placeholder={this.state.tenent.city}
+          onChange={this.handleChange}
+        />
+      </InputGroup>
+    </FormGroup>
+
+  <FormGroup>
+      <InputGroup>
+        <InputGroup.Addon>State </InputGroup.Addon>
+        <FormControl type="text"
+          value={this.state.value}
+          placeholder={this.state.tenent.state}
+          onChange={this.handleChange}
+        />
+      </InputGroup>
+    </FormGroup>
+
+  <FormGroup>
+      <InputGroup>
+        <InputGroup.Addon>Zip </InputGroup.Addon>
+        <FormControl type="text"
+          value={this.state.value}
+          placeholder={this.state.tenent.zip}
+          onChange={this.handleChange}
+        />
+      </InputGroup>
+    </FormGroup>
+
+  <FormGroup>
+      <InputGroup>
+        <InputGroup.Addon>Phone #</InputGroup.Addon>
+        <FormControl type="text"
+          value={this.state.value}
+          placeholder={this.state.tenent.phone_number}
+          onChange={this.handleChange}
+        />
+      </InputGroup>
+    </FormGroup>
+
+
+  <FormGroup>
+      <InputGroup>
+        <InputGroup.Addon>Email @</InputGroup.Addon>
+        <FormControl type="text"
+          value={this.state.value}
+          placeholder={this.state.tenent.email}
+          onChange={this.handleChange}
+        />
+      </InputGroup>
+    </FormGroup>
+
+
+
+
 
 
    <FormGroup>
      <InputGroup>
        <InputGroup.Addon>Image Url @</InputGroup.Addon>
-       <FormControl type="text" />
+       <FormControl type="text"
+         value={this.state.value}
+         placeholder={this.state.tenent.image_url}
+         onChange={this.handleChange}
+       />
      </InputGroup>
    </FormGroup>
 
@@ -92,7 +178,7 @@ const ManageProfile = React.createClass({
 
     );
   }
-});
+};
 
 
 export default ManageProfile
