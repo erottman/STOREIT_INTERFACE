@@ -24,17 +24,16 @@ class ManageProfile extends Component {
       }
     }
 
-    this.getValidationState = this.getValidationState.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleFirstNameChange = this.handleFirstNameChange.bind(this)
     this.handleLastNameChange = this.handleLastNameChange.bind(this)
     this.handleAddressLine1Change = this.handleAddressLine1Change.bind(this)
     this.handleAddressLine2Change = this.handleAddressLine2Change.bind(this)
-    this.handleCityChange = this.handleFirstNameChange.bind(this)
-    this.handleStateChange = this.handleLastNameChange.bind(this)
-    this.handleZipChange = this.handleAddressLine1Change.bind(this)
-    this.handlePhoneChange = this.handleAddressLine2Change.bind(this)
-    this.handleEmailChange = this.handleFirstNameChange.bind(this)
+    this.handleCityChange = this.handleCityChange.bind(this)
+    this.handleStateChange = this.handleStateChange.bind(this)
+    this.handleZipChange = this.handleZipChange.bind(this)
+    this.handlePhoneChange = this.handlePhoneChange.bind(this)
+    this.handleEmailChange = this.handleEmailChange.bind(this)
     this.handleImageUrlChange = this.handleImageUrlChange.bind(this)
   }
 
@@ -63,13 +62,6 @@ class ManageProfile extends Component {
     }
 
 
-  getValidationState() {
-    console.log('state', this.state);
-    const length = this.state.values.first_name.length;
-    if (length > 10) return 'success';
-    else if (length > 5) return 'warning';
-    else if (length > 0) return 'error';
-  }
 
   handleFirstNameChange(e) {
     console.log('string', e.target.value);
@@ -82,7 +74,7 @@ class ManageProfile extends Component {
   handleLastNameChange(e) {
     console.log('string', e.target.value);
     this.setState({values: {
-      last_name: this.state.values.last_name + e.target.value,
+      last_name: e.target.value,
       }
      });
   }
@@ -99,40 +91,56 @@ class ManageProfile extends Component {
   handleAddressLine2Change(e) {
     console.log('string', e.target.value);
     this.setState({values: {
-      address_line_2: this.state.values.last_name + e.target.value,
+      address_line_2: e.target.value,
       }
      });
   }
 
-  handleFirstNameChange(e) {
+  handleCityChange(e) {
     console.log('string', e.target.value);
     this.setState({values: {
-      first_name: e.target.value,
+      city: e.target.value,
       }
      });
   }
 
-  handleLastNameChange(e) {
+  handleStateChange(e) {
     console.log('string', e.target.value);
     this.setState({values: {
-      last_name: this.state.values.last_name + e.target.value,
+      state: e.target.value,
       }
      });
   }
 
 
-  handleFirstNameChange(e) {
+  handleZipChange(e) {
     console.log('string', e.target.value);
     this.setState({values: {
-      first_name: e.target.value,
+      zip: e.target.value,
       }
      });
   }
 
-  handleLastNameChange(e) {
+  handlePhoneChange(e) {
     console.log('string', e.target.value);
     this.setState({values: {
-      last_name: this.state.values.last_name + e.target.value,
+      phone_number: e.target.value,
+      }
+     });
+  }
+
+  handleEmailChange(e) {
+    console.log('string', e.target.value);
+    this.setState({values: {
+      email: e.target.value,
+      }
+     });
+  }
+
+  handleImageUrlChange(e) {
+    console.log('string', e.target.value);
+    this.setState({values: {
+      image_url: e.target.value,
       }
      });
   }
@@ -143,7 +151,6 @@ class ManageProfile extends Component {
 
   <FormGroup
     controlId="formBasicText"
-    validationState={this.getValidationState()}
   >
     <ControlLabel>First Name</ControlLabel>
     <FormControl
@@ -156,9 +163,8 @@ class ManageProfile extends Component {
     <HelpBlock>No longer than 10 Characters</HelpBlock>
   </FormGroup>
 
-  <FormGroup
+   <FormGroup
     controlId="formBasicText"
-    validationState={this.getValidationState()}
   >
     <ControlLabel>Last Name</ControlLabel>
     <FormControl
@@ -173,27 +179,25 @@ class ManageProfile extends Component {
 
   <FormGroup
     controlId="formBasicText"
-    validationState={this.getValidationState()}
   >
     <ControlLabel>Address Line 1</ControlLabel>
     <FormControl
       type="text"
       value={this.state.values.address_line_1}
       placeholder={this.state.tenent.address_line_1}
-      onChange={this.handleLastNameChange}
+      onChange={this.handleAddressLine1Change}
     />
   </FormGroup>
 
   <FormGroup
     controlId="formBasicText"
-    validationState={this.getValidationState()}
   >
     <ControlLabel>Address Line 2</ControlLabel>
     <FormControl
       type="text"
       value={this.state.values.address_line_2}
       placeholder={this.state.tenent.address_line_2}
-      onChange={this.handleLastNameChange}
+      onChange={this.handleAddressLine2Change}
     />
   </FormGroup>
 
@@ -203,7 +207,7 @@ class ManageProfile extends Component {
         <FormControl type="text"
           value={this.state.values.city}
           placeholder={this.state.tenent.city}
-          onChange={this.handleLastNameChange}
+          onChange={this.handleCityChange}
         />
       </InputGroup>
     </FormGroup>
@@ -214,7 +218,7 @@ class ManageProfile extends Component {
         <FormControl type="text"
           value={this.state.values.state}
           placeholder={this.state.tenent.state}
-          onChange={this.handleLastNameChange}
+          onChange={this.handleStateChange}
         />
       </InputGroup>
     </FormGroup>
@@ -225,7 +229,7 @@ class ManageProfile extends Component {
         <FormControl type="text"
           value={this.state.values.zip}
           placeholder={this.state.tenent.zip}
-          onChange={this.handleLastNameChange}
+          onChange={this.handleZipChange}
         />
       </InputGroup>
     </FormGroup>
@@ -236,7 +240,7 @@ class ManageProfile extends Component {
         <FormControl type="text"
           value={this.state.values.phone_number}
           placeholder={this.state.tenent.phone_number}
-          onChange={this.handleLastNameChange}
+          onChange={this.handlePhoneChange}
         />
       </InputGroup>
     </FormGroup>
@@ -248,7 +252,7 @@ class ManageProfile extends Component {
         <FormControl type="text"
           value={this.state.values.email}
           placeholder={this.state.tenent.email}
-          onChange={this.handleChange}
+          onChange={this.handleEmailChange}
         />
       </InputGroup>
     </FormGroup>
@@ -260,13 +264,13 @@ class ManageProfile extends Component {
        <FormControl type="text"
          value={this.state.values.image_url}
          placeholder={this.state.tenent.image_url}
-         onChange={this.handleChange}
+         onChange={this.handleImageUrlChange}
        />
      </InputGroup>
    </FormGroup>
 
  <Button type="submit">
-      Edit Item
+      Update Profile
     </Button>
 
 </form>
