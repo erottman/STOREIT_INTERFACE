@@ -9,17 +9,43 @@ class ManageProfile extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      tenent: [],
-      value: '',
+      tenent: {},
+      values: {
+        first_name: '',
+        last_name: '',
+        address_line_1: '',
+        address_line_2: '',
+        city: '',
+        state: '',
+        zip: '',
+        phone_number: '',
+        email: '',
+        image_url: '',
+      }
     }
+    this.handleFirstNameChange = this.handleFirstNameChange.bind(this)
+    this.getValidationState = this.getValidationState.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  componentWillMount() {
+  handleSubmit(e) {
+    e.preventDefault()
+    console.log('strig', this.state.values);
+    axios.put('http://localhost:3000/api/tenents/2', this.state.values)
+      .then(response => {
+        console.log(response.data);
+        this.setState({
+          tenent: response.data,
+        })
+      })
+  }
+
+  componentDidMount() {
    //axios.get(`/api/users/${this.props.params.id}`)
    axios.get('http://localhost:3000/api/tenents/2')
       .then(response => {
         this.setState({
-          tenent : response.data[0],
+          tenent : response.data,
         })
       })
       .catch(err => {
@@ -28,19 +54,32 @@ class ManageProfile extends Component {
 
 
   getValidationState() {
-    const length = this.state.value.length;
+    console.log('state', this.state);
+    const length = this.state.values.first_name.length;
     if (length > 10) return 'success';
     else if (length > 5) return 'warning';
     else if (length > 0) return 'error';
   }
 
-  handleChange(e) {
-    this.setState({ value: e.target.value });
+  handleFirstNameChange(e) {
+    console.log('string', e.target.value);
+    this.setState({values: {
+      first_name: e.target.value,
+      }
+     });
+  }
+
+  handleLastNameChange(e) {
+    console.log('string', e.target.value);
+    this.setState({values: {
+      last_name: this.state.values.last_name + e.target.value,
+      }
+     });
   }
 
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
 
   <FormGroup
     controlId="formBasicText"
@@ -49,9 +88,9 @@ class ManageProfile extends Component {
     <ControlLabel>First Name</ControlLabel>
     <FormControl
       type="text"
-      value={this.state.value}
+      value={this.state.values.first_name}
       placeholder={this.state.tenent.first_name}
-      onChange={this.handleChange}
+      onChange={this.handleFirstNameChange}
     />
     <FormControl.Feedback />
     <HelpBlock>No longer than 10 Characters</HelpBlock>
@@ -64,9 +103,9 @@ class ManageProfile extends Component {
     <ControlLabel>Last Name</ControlLabel>
     <FormControl
       type="text"
-      value={this.state.value}
+      value={this.state.values.last_name}
       placeholder={this.state.tenent.last_name}
-      onChange={this.handleChange}
+      onChange={this.handleLastNameChange.bind(this)}
     />
     <FormControl.Feedback />
     <HelpBlock>No longer than 10 Characters</HelpBlock>
@@ -79,9 +118,9 @@ class ManageProfile extends Component {
     <ControlLabel>Address Line 1</ControlLabel>
     <FormControl
       type="text"
-      value={this.state.value}
+      value={this.state.values.address_line_1}
       placeholder={this.state.tenent.address_line_1}
-      onChange={this.handleChange}
+      onChange={this.handleLastNameChange}
     />
   </FormGroup>
 
@@ -92,9 +131,9 @@ class ManageProfile extends Component {
     <ControlLabel>Address Line 2</ControlLabel>
     <FormControl
       type="text"
-      value={this.state.value}
+      value={this.state.values.address_line_2}
       placeholder={this.state.tenent.address_line_2}
-      onChange={this.handleChange}
+      onChange={this.handleLastNameChange}
     />
   </FormGroup>
 
@@ -102,9 +141,9 @@ class ManageProfile extends Component {
       <InputGroup>
         <InputGroup.Addon>City </InputGroup.Addon>
         <FormControl type="text"
-          value={this.state.value}
+          value={this.state.values.city}
           placeholder={this.state.tenent.city}
-          onChange={this.handleChange}
+          onChange={this.handleLastNameChange}
         />
       </InputGroup>
     </FormGroup>
@@ -113,9 +152,9 @@ class ManageProfile extends Component {
       <InputGroup>
         <InputGroup.Addon>State </InputGroup.Addon>
         <FormControl type="text"
-          value={this.state.value}
+          value={this.state.values.state}
           placeholder={this.state.tenent.state}
-          onChange={this.handleChange}
+          onChange={this.handleLastNameChange}
         />
       </InputGroup>
     </FormGroup>
@@ -124,9 +163,9 @@ class ManageProfile extends Component {
       <InputGroup>
         <InputGroup.Addon>Zip </InputGroup.Addon>
         <FormControl type="text"
-          value={this.state.value}
+          value={this.state.values.zip}
           placeholder={this.state.tenent.zip}
-          onChange={this.handleChange}
+          onChange={this.handleLastNameChange}
         />
       </InputGroup>
     </FormGroup>
@@ -135,9 +174,9 @@ class ManageProfile extends Component {
       <InputGroup>
         <InputGroup.Addon>Phone #</InputGroup.Addon>
         <FormControl type="text"
-          value={this.state.value}
+          value={this.state.values.phone_number}
           placeholder={this.state.tenent.phone_number}
-          onChange={this.handleChange}
+          onChange={this.handleLastNameChange}
         />
       </InputGroup>
     </FormGroup>
@@ -147,7 +186,7 @@ class ManageProfile extends Component {
       <InputGroup>
         <InputGroup.Addon>Email @</InputGroup.Addon>
         <FormControl type="text"
-          value={this.state.value}
+          value={this.state.values.email}
           placeholder={this.state.tenent.email}
           onChange={this.handleChange}
         />
@@ -155,15 +194,11 @@ class ManageProfile extends Component {
     </FormGroup>
 
 
-
-
-
-
    <FormGroup>
      <InputGroup>
        <InputGroup.Addon>Image Url @</InputGroup.Addon>
        <FormControl type="text"
-         value={this.state.value}
+         value={this.state.values.image_url}
          placeholder={this.state.tenent.image_url}
          onChange={this.handleChange}
        />

@@ -10,18 +10,18 @@ class TenentsPage extends Component {
   constructor(props) {
     super(props)
       this.state = {
-        tenent: [],
+        tenent: {},
         unit: [],
         facility: [],
       }
     }
 
-  componentWillMount() {
+  componentDidMount() {
    //axios.get(`/api/users/${this.props.params.id}`)
    axios.get('http://localhost:3000/api/tenents/2')
       .then(response => {
         this.setState({
-          tenent : response.data[0],
+          tenent : response.data,
         })
       })
       .catch(err => {
