@@ -4,6 +4,7 @@ import { Accordion, ListGroup, ListGroupItem, Panel, Image, DropdownButton, Grid
 import '../App.css'
 import CurrentItems from './CurrentItems'
 import AddItems from './AddItems'
+import Items  from '../images/items.png'
 
 
 class ItemsPage extends Component {
@@ -13,7 +14,7 @@ class ItemsPage extends Component {
     <Grid>
       <Row>
       <Col xs={12} sm={12}>
-        <Thumbnail src="http://www.rw-designer.com/icon-image/834-256x256x32.png" alt="260x260">
+        <Thumbnail src={Items} alt="260x260">
           <h3>Manage Items</h3>
           <p>View, Add, and Delete Current Items in a Box</p>
           <p>Easily look-up an items Details and Value</p>

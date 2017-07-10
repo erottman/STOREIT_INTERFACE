@@ -44,11 +44,12 @@ class Login extends Component {
     })
     .catch(err => {
       console.error(err)
-      alert("Username or password does not exist")
+      alert("Username or password does not exist 333")
     })
   }
 
   render() {
+    console.log('props', this.props.addUser);
     const form = (
       <form className="col-md-4 col-md-offset-2">
         <FormGroup>
@@ -74,7 +75,7 @@ class Login extends Component {
               <Checkbox>Remember me</Checkbox>
             </Col>
           </FormGroup>
-          <Button bsStyle="primary" type="submit" onClick={this.handleSubmit}>
+          <Button bsStyle="primary" bsSize="large" type="submit" onClick={this.handleSubmit}>
             Login
           </Button>
         </FormGroup>

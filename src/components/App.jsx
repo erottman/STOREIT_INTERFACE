@@ -14,8 +14,8 @@ class App extends Component {
       isLoggedIn: false,
       loggedInUser: ''
     }
-    this.addToCart = this.addToCart.bind(this)
-    this.deleteCartItem = this.deleteCartItem.bind(this)
+    this.addToBox = this.addToBox.bind(this)
+    this.deleteBoxItem = this.deleteBoxItem.bind(this)
     this.addUser = this.addUser.bind(this)
   }
 
@@ -26,7 +26,7 @@ class App extends Component {
     if (isLoggingIn) {
       browserHistory.goBack()
     } else if (isLoggingOut) {
-      browserHistory.push('/products')
+      browserHistory.push('/tenents')
     }
   }
 
@@ -35,21 +35,21 @@ class App extends Component {
       user: this.state.user.concat(newUser),
       isLoggedIn: !this.state.isLoggedIn,
     })
-    browserHistory.push('/products')
+    browserHistory.push('/tenents')
   }
 
-  addToCart(newItem){
+  addToBox(newItem){
     this.setState({
-      cart: this.state.cart.concat(newItem),
+      cart: this.state.box.concat(newItem),
       numberOfItems: this.state.numberOfItems + 1
     })
   }
 
-  deleteCartItem(item){
-    const index = this.state.cart.indexOf(item)
+  deleteBoxItem(item){
+    const index = this.box.cart.indexOf(item)
     this.setState({
-      cart: this.state.cart.filter((_, i) => i !== index),
-      numberOfItems: this.state.numberOfItems - 1
+      cart: this.state.box.filter((_, i) => i !== index),
+      numberOfItems: this.box.numberOfItems - 1
     })
   }
 
@@ -57,7 +57,7 @@ class App extends Component {
     const homepage = (
       <div>
       <div><Header/></div>
-      <div><LandingPage /></div>
+      <div><LandingPage addUser={this.addUser}/></div>
     </div>
     )
 
@@ -66,7 +66,7 @@ class App extends Component {
         { this.props.children
           ? <div>
             <Header numberOfItems={this.state.numberOfItems} isLoggedIn={this.state.isLoggedIn}/>
-            {React.cloneElement(this.props.children, {...this.state, addToCart: this.addToCart, deleteCartItem: this.deleteCartItem, addUser: this.addUser})}
+            {React.cloneElement(this.props.children, {...this.state, addUser: this.addUser})}
           </div>
           :  <div className="homepage">
               {homepage}
