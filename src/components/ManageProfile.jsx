@@ -23,9 +23,19 @@ class ManageProfile extends Component {
         image_url: '',
       }
     }
-    this.handleFirstNameChange = this.handleFirstNameChange.bind(this)
+
     this.getValidationState = this.getValidationState.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleFirstNameChange = this.handleFirstNameChange.bind(this)
+    this.handleLastNameChange = this.handleLastNameChange.bind(this)
+    this.handleAddressLine1Change = this.handleAddressLine1Change.bind(this)
+    this.handleAddressLine2Change = this.handleAddressLine2Change.bind(this)
+    this.handleCityChange = this.handleFirstNameChange.bind(this)
+    this.handleStateChange = this.handleLastNameChange.bind(this)
+    this.handleZipChange = this.handleAddressLine1Change.bind(this)
+    this.handlePhoneChange = this.handleAddressLine2Change.bind(this)
+    this.handleEmailChange = this.handleFirstNameChange.bind(this)
+    this.handleImageUrlChange = this.handleImageUrlChange.bind(this)
   }
 
   handleSubmit(e) {
@@ -60,6 +70,56 @@ class ManageProfile extends Component {
     else if (length > 5) return 'warning';
     else if (length > 0) return 'error';
   }
+
+  handleFirstNameChange(e) {
+    console.log('string', e.target.value);
+    this.setState({values: {
+      first_name: e.target.value,
+      }
+     });
+  }
+
+  handleLastNameChange(e) {
+    console.log('string', e.target.value);
+    this.setState({values: {
+      last_name: this.state.values.last_name + e.target.value,
+      }
+     });
+  }
+
+
+  handleAddressLine1Change(e) {
+    console.log('string', e.target.value);
+    this.setState({values: {
+      address_line_1: e.target.value,
+      }
+     });
+  }
+
+  handleAddressLine2Change(e) {
+    console.log('string', e.target.value);
+    this.setState({values: {
+      address_line_2: this.state.values.last_name + e.target.value,
+      }
+     });
+  }
+
+  handleFirstNameChange(e) {
+    console.log('string', e.target.value);
+    this.setState({values: {
+      first_name: e.target.value,
+      }
+     });
+  }
+
+  handleLastNameChange(e) {
+    console.log('string', e.target.value);
+    this.setState({values: {
+      last_name: this.state.values.last_name + e.target.value,
+      }
+     });
+  }
+
 
   handleFirstNameChange(e) {
     console.log('string', e.target.value);
