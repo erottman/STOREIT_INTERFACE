@@ -6,9 +6,39 @@ import Search from './Search'
 import Add from './Add'
 import Edit from './Edit'
 import Boxes  from '../images/manageboxes.png'
+import axios from 'axios'
 
 
 class BoxesPage extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      boxes:[],
+      items:[],
+      value : 400,
+    }
+  }
+
+  componentDidMount() {
+    axios.get('http://localhost:3000/api/boxes')
+      .then(response => {
+        this.setState({
+          boxes: response.data
+        })
+      })
+      .catch(err => {
+      })
+
+    axios.get('http://localhost:3000/api/items')
+      .then(response => {
+        this.setState({
+          items: response.data
+        })
+      })
+      .catch(err => {
+      })
+  }
+
   render() {
 
     const thumbnailInstance = (
@@ -19,7 +49,7 @@ class BoxesPage extends Component {
           <h3>Manage Storage</h3>
           <p>Add boxes with item details and storage location</p>
           <p>Easily look-up boxes to view and edit item details</p>
-          <p>Boxes= 48  Items=  348  Value= $8567</p>
+          <p>Boxes= {this.state.boxes.length}  Items=  {this.state.items.length}   Value=${this.state.value}</p>
         </Thumbnail>
       </Col>
       </Row>
