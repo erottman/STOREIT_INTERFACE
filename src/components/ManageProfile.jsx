@@ -39,7 +39,6 @@ class ManageProfile extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    console.log('strig', this.state.values);
     axios.put('http://localhost:3000/api/tenents/2', this.state.values)
       .then(response => {
         console.log(response.data);
@@ -56,6 +55,7 @@ class ManageProfile extends Component {
         this.setState({
           tenent : response.data,
         })
+
       })
       .catch(err => {
       })
