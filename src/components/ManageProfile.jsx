@@ -148,132 +148,130 @@ class ManageProfile extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+        <FormGroup
+          controlId="formBasicText"
+        >
+          <ControlLabel>First Name</ControlLabel>
+          <FormControl
+            type="text"
+            value={this.state.values.first_name}
+            placeholder={this.state.tenent.first_name}
+            onChange={this.handleFirstNameChange}
+          />
+          <FormControl.Feedback />
+          <HelpBlock>No longer than 10 Characters</HelpBlock>
+        </FormGroup>
 
-  <FormGroup
-    controlId="formBasicText"
-  >
-    <ControlLabel>First Name</ControlLabel>
-    <FormControl
-      type="text"
-      value={this.state.values.first_name}
-      placeholder={this.state.tenent.first_name}
-      onChange={this.handleFirstNameChange}
-    />
-    <FormControl.Feedback />
-    <HelpBlock>No longer than 10 Characters</HelpBlock>
-  </FormGroup>
+         <FormGroup
+          controlId="formBasicText"
+        >
+          <ControlLabel>Last Name</ControlLabel>
+          <FormControl
+            type="text"
+            value={this.state.values.last_name}
+            placeholder={this.state.tenent.last_name}
+            onChange={this.handleLastNameChange.bind(this)}
+          />
+          <FormControl.Feedback />
+          <HelpBlock>No longer than 10 Characters</HelpBlock>
+        </FormGroup>
 
-   <FormGroup
-    controlId="formBasicText"
-  >
-    <ControlLabel>Last Name</ControlLabel>
-    <FormControl
-      type="text"
-      value={this.state.values.last_name}
-      placeholder={this.state.tenent.last_name}
-      onChange={this.handleLastNameChange.bind(this)}
-    />
-    <FormControl.Feedback />
-    <HelpBlock>No longer than 10 Characters</HelpBlock>
-  </FormGroup>
+        <FormGroup
+          controlId="formBasicText"
+        >
+          <ControlLabel>Address Line 1</ControlLabel>
+          <FormControl
+            type="text"
+            value={this.state.values.address_line_1}
+            placeholder={this.state.tenent.address_line_1}
+            onChange={this.handleAddressLine1Change}
+          />
+        </FormGroup>
 
-  <FormGroup
-    controlId="formBasicText"
-  >
-    <ControlLabel>Address Line 1</ControlLabel>
-    <FormControl
-      type="text"
-      value={this.state.values.address_line_1}
-      placeholder={this.state.tenent.address_line_1}
-      onChange={this.handleAddressLine1Change}
-    />
-  </FormGroup>
+        <FormGroup
+          controlId="formBasicText"
+        >
+          <ControlLabel>Address Line 2</ControlLabel>
+          <FormControl
+            type="text"
+            value={this.state.values.address_line_2}
+            placeholder={this.state.tenent.address_line_2}
+            onChange={this.handleAddressLine2Change}
+          />
+        </FormGroup>
 
-  <FormGroup
-    controlId="formBasicText"
-  >
-    <ControlLabel>Address Line 2</ControlLabel>
-    <FormControl
-      type="text"
-      value={this.state.values.address_line_2}
-      placeholder={this.state.tenent.address_line_2}
-      onChange={this.handleAddressLine2Change}
-    />
-  </FormGroup>
+        <FormGroup>
+            <InputGroup>
+              <InputGroup.Addon>City </InputGroup.Addon>
+              <FormControl type="text"
+                value={this.state.values.city}
+                placeholder={this.state.tenent.city}
+                onChange={this.handleCityChange}
+              />
+            </InputGroup>
+          </FormGroup>
 
-  <FormGroup>
-      <InputGroup>
-        <InputGroup.Addon>City </InputGroup.Addon>
-        <FormControl type="text"
-          value={this.state.values.city}
-          placeholder={this.state.tenent.city}
-          onChange={this.handleCityChange}
-        />
-      </InputGroup>
-    </FormGroup>
+        <FormGroup>
+            <InputGroup>
+              <InputGroup.Addon>State </InputGroup.Addon>
+              <FormControl type="text"
+                value={this.state.values.state}
+                placeholder={this.state.tenent.state}
+                onChange={this.handleStateChange}
+              />
+            </InputGroup>
+          </FormGroup>
 
-  <FormGroup>
-      <InputGroup>
-        <InputGroup.Addon>State </InputGroup.Addon>
-        <FormControl type="text"
-          value={this.state.values.state}
-          placeholder={this.state.tenent.state}
-          onChange={this.handleStateChange}
-        />
-      </InputGroup>
-    </FormGroup>
+        <FormGroup>
+            <InputGroup>
+              <InputGroup.Addon>Zip </InputGroup.Addon>
+              <FormControl type="text"
+                value={this.state.values.zip}
+                placeholder={this.state.tenent.zip}
+                onChange={this.handleZipChange}
+              />
+            </InputGroup>
+          </FormGroup>
 
-  <FormGroup>
-      <InputGroup>
-        <InputGroup.Addon>Zip </InputGroup.Addon>
-        <FormControl type="text"
-          value={this.state.values.zip}
-          placeholder={this.state.tenent.zip}
-          onChange={this.handleZipChange}
-        />
-      </InputGroup>
-    </FormGroup>
-
-  <FormGroup>
-      <InputGroup>
-        <InputGroup.Addon>Phone #</InputGroup.Addon>
-        <FormControl type="text"
-          value={this.state.values.phone_number}
-          placeholder={this.state.tenent.phone_number}
-          onChange={this.handlePhoneChange}
-        />
-      </InputGroup>
-    </FormGroup>
-
-
-  <FormGroup>
-      <InputGroup>
-        <InputGroup.Addon>Email @</InputGroup.Addon>
-        <FormControl type="text"
-          value={this.state.values.email}
-          placeholder={this.state.tenent.email}
-          onChange={this.handleEmailChange}
-        />
-      </InputGroup>
-    </FormGroup>
+        <FormGroup>
+            <InputGroup>
+              <InputGroup.Addon>Phone #</InputGroup.Addon>
+              <FormControl type="text"
+                value={this.state.values.phone_number}
+                placeholder={this.state.tenent.phone_number}
+                onChange={this.handlePhoneChange}
+              />
+            </InputGroup>
+          </FormGroup>
 
 
-   <FormGroup>
-     <InputGroup>
-       <InputGroup.Addon>Image Url @</InputGroup.Addon>
-       <FormControl type="text"
-         value={this.state.values.image_url}
-         placeholder={this.state.tenent.image_url}
-         onChange={this.handleImageUrlChange}
-       />
-     </InputGroup>
-   </FormGroup>
+        <FormGroup>
+            <InputGroup>
+              <InputGroup.Addon>Email @</InputGroup.Addon>
+              <FormControl type="text"
+                value={this.state.values.email}
+                placeholder={this.state.tenent.email}
+                onChange={this.handleEmailChange}
+              />
+            </InputGroup>
+          </FormGroup>
 
- <Button type="submit">
-      Update Profile
-    </Button>
 
-</form>
+         <FormGroup>
+           <InputGroup>
+             <InputGroup.Addon>Image Url @</InputGroup.Addon>
+             <FormControl type="text"
+               value={this.state.values.image_url}
+               placeholder={this.state.tenent.image_url}
+               onChange={this.handleImageUrlChange}
+             />
+           </InputGroup>
+         </FormGroup>
+
+       <Button type="submit">
+            Update Profile
+          </Button>
+      </form>
 
     );
   }
