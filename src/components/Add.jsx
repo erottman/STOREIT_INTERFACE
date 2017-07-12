@@ -2,32 +2,46 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { Checkbox, Form, inline, HelpBlock, InputGroup, Image, DropdownButton, Grid, Row, Col, Thumbnail, Button,FormGroup , ControlLabel, FormControl } from 'react-bootstrap'
 import '../App.css'
+import axios from 'axios'
 
 
-const Add = React.createClass({
-  getInitialState() {
-    return {
-      value: ''
-    };
-  },
+class Add extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      values: {
+        id:'',
+        identifier:'',
+        unit_number: '',
+        date_packed: '',
+        date_stored: '',
+        room: '',
+        unit_location: '',
+        description: '',
+    }
+  }
+    this.handleSubmitPost = this.handleSubmitPost.bind(this)
+  }
 
-  getValidationState() {
-    const length = this.state.value.length;
-    if (length > 10) return 'success';
-    else if (length > 5) return 'warning';
-    else if (length > 0) return 'error';
-  },
+  handleSubmitPost(e) {
+    e.preventDefault()
+    axios.post('http://localhost:3000/api/boxes', this.state.values)
+      .then(response => {
+        console.log(response.data);
+        this.setState({
+          box: response.data,
+        })
+      });
+  }
 
-  handleChange(e) {
-    this.setState({ value: e.target.value });
-  },
+
 
   render() {
     return (
       <form>
   <FormGroup
     controlId="formBasicText"
-    validationState={this.getValidationState()}
+
   >
     <ControlLabel>Box Identifier</ControlLabel>
     <FormControl
@@ -42,7 +56,7 @@ const Add = React.createClass({
 
   <FormGroup
     controlId="formBasicText"
-    validationState={this.getValidationState()}
+
   >
     <ControlLabel>Unit Number</ControlLabel>
     <FormControl
@@ -115,7 +129,7 @@ const Add = React.createClass({
 
     );
   }
-});
+};
 
 
 export default Add
