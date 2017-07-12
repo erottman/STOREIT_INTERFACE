@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { Addon, Checkbox, Form, inline, HelpBlock, InputGroup, Image, DropdownButton, Grid, Row, Col, Thumbnail, Button,FormGroup , ControlLabel, FormControl } from 'react-bootstrap'
 import '../App.css'
+import { browserHistory } from 'react-router'
 import axios from 'axios'
 
 
@@ -41,12 +42,18 @@ class ManageProfile extends Component {
     e.preventDefault()
     axios.put('http://localhost:3000/api/tenents/2', this.state.values)
       .then(response => {
-        console.log(response.data);
-        this.setState({
-          tenent: response.data,
-        })
+        if(response.data.error){
+          alert("Please fill in all required data")
+        }else {
+          window.location.reload()
+        }
       })
-  }
+      .catch(err => {
+        console.error(err)
+        alert("Please fill in all required data")
+        })
+    }
+
 
   componentDidMount() {
    //axios.get(`/api/users/${this.props.params.id}`)

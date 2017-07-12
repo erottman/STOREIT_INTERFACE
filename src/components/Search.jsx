@@ -2,42 +2,65 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { HelpBlock, ListGroup, ListGroupItem, Panel, Image, DropdownButton, Grid, Row, Col, Thumbnail, Button,FormGroup , ControlLabel, FormControl } from 'react-bootstrap'
 import '../App.css'
+import { browserHistory } from 'react-router'
+import axios from 'axios'
 
 
-const Search = React.createClass({
-  getInitialState() {
-    return {
-      value: ''
-    };
-  },
+class Search extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      id:'',
+    }
+    this.handleSubmitGet = this.handleSubmitGet.bind(this)
+    this.handleIdChange = this.handleIdChange.bind(this)
+  }
 
-  getValidationState() {
-    const length = this.state.value.length;
-    if (length > 10) return 'success';
-    else if (length > 5) return 'warning';
-    else if (length > 0) return 'error';
-  },
+  handleSubmitGet(event) {
+    event.preventDefault()
 
-  handleChange(e) {
-    this.setState({ value: e.target.value });
-  },
+    const id = {
+      id: this.state.id,
+    }
+
+    axios.get('http://localhost:3000/api/boxes/', id )
+    .then(response => {
+      if (response.data.error){
+        console.log(id);
+        alert("Box does not exist")
+      } else {
+        browserHistory.push('/items')
+      }
+  })
+    .catch(err => {
+      console.error(err)
+      alert("Box does not exist")
+      })
+  }
+
+
+  handleIdChange(e) {
+    console.log('string', e.target.value);
+    this.setState({
+      id: e.target.value,
+    });
+  }
 
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmitGet}>
         <FormGroup
           controlId="formBasicText"
-          validationState={this.getValidationState()}
         >
-          <ControlLabel>Box Identifier </ControlLabel>
+          <ControlLabel>Box Id </ControlLabel>
           <FormControl
             type="text"
-            value={this.state.value}
-            placeholder="box2"
-            onChange={this.handleChange}
+            value={this.state.id}
+            placeholder="3"
+            onChange={this.handleIdChange}
           />
           <FormControl.Feedback />
-          <HelpBlock>No longer than 10 characters</HelpBlock>
+          <HelpBlock>Numbers Only</HelpBlock>
         </FormGroup>
 
         <Button type="submit">
@@ -46,7 +69,7 @@ const Search = React.createClass({
       </form>
     );
   }
-});
+};
 
 
 export default Search

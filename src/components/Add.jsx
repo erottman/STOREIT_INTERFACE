@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { Checkbox, Form, inline, HelpBlock, InputGroup, Image, DropdownButton, Grid, Row, Col, Thumbnail, Button,FormGroup , ControlLabel, FormControl } from 'react-bootstrap'
 import '../App.css'
+import { browserHistory } from 'react-router'
 import axios from 'axios'
 
 
@@ -9,8 +10,6 @@ class Add extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      values: {
-        id:'',
         identifier:'',
         unit_number: '',
         date_packed: '',
@@ -18,114 +17,192 @@ class Add extends Component {
         room: '',
         unit_location: '',
         description: '',
-    }
+
   }
     this.handleSubmitPost = this.handleSubmitPost.bind(this)
+    this.handleIdentifierChange = this.handleIdentifierChange.bind(this)
+    this.handleUnitChange = this.handleUnitChange.bind(this)
+    this.handlePackedChange = this.handlePackedChange.bind(this)
+    this.handleStoredChange = this.handleStoredChange.bind(this)
+    this.handleRoomChange = this.handleRoomChange.bind(this)
+    this.handleLocationChange = this.handleLocationChange.bind(this)
+    this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
   }
 
   handleSubmitPost(e) {
     e.preventDefault()
-    axios.post('http://localhost:3000/api/boxes', this.state.values)
+    console.log('look',this.state);
+    axios.post('http://localhost:3000/api/boxes', this.state)
       .then(response => {
-        console.log(response.data);
-        this.setState({
-          box: response.data,
+        if(response.data.error){
+          alert("Please fill in all required data")
+        }else {
+          browserHistory.push('/items')
+        }
+      })
+      .catch(err => {
+        console.error(err)
+        alert("Please fill in all required data")
         })
-      });
+    }
+
+
+  handleIdentifierChange(e) {
+    console.log('string', e.target.value);
+    this.setState({
+      identifier: e.target.value,
+     });
   }
 
+  handleUnitChange(e) {
+    console.log('string', e.target.value);
+    this.setState({
+      unit_number: e.target.value,
+     });
+  }
+
+  handlePackedChange(e) {
+    console.log('string', e.target.value);
+    this.setState({
+      date_packed: e.target.value,
+     });
+  }
+
+  handleStoredChange(e) {
+    console.log('string', e.target.value);
+    this.setState({
+      date_stored: e.target.value,
+     });
+  }
+
+  handleRoomChange(e) {
+    console.log('string', e.target.value);
+    this.setState({
+      room: e.target.value,
+     });
+  }
+
+  handleLocationChange(e) {
+    console.log('string', e.target.value);
+    this.setState({
+      unit_location: e.target.value,
+     });
+  }
+
+  handleDescriptionChange(e) {
+    console.log('string', e.target.value);
+    this.setState({
+      description: e.target.value,
+     });
+  }
 
 
   render() {
     return (
-      <form>
-  <FormGroup
-    controlId="formBasicText"
+      <form onSubmit={this.handleSubmitPost}>
+        <FormGroup
+          controlId="formBasicText"
+          >
+          <ControlLabel>Box Identifier</ControlLabel>
+          <FormControl
+            type="text"
+            value={this.state.identifier}
+            placeholder="example box2"
+            onChange={this.handleIdentifierChange}
+          />
+        </FormGroup>
 
-  >
-    <ControlLabel>Box Identifier</ControlLabel>
-    <FormControl
-      type="text"
-      value={this.state.value}
-      placeholder="example box2"
-      onChange={this.handleChange}
-    />
-    <FormControl.Feedback />
-    <HelpBlock>No longer than 10 characters</HelpBlock>
-  </FormGroup>
+      <FormGroup
+        controlId="formBasicText">
+        <ControlLabel>Unit Number</ControlLabel>
+        <FormControl
+          type="text"
+          value={this.state.unit_number}
+          placeholder="444"
+          onChange={this.handleUnitChange}
+        />
+        <FormControl.Feedback />
+        <HelpBlock>Please enter numbers only</HelpBlock>
+      </FormGroup>
 
-  <FormGroup
-    controlId="formBasicText"
+      <FormGroup>
+       <InputGroup>
+         <InputGroup.Button>
+           <Button>Packed Date</Button>
+         </InputGroup.Button>
+         <FormControl
+           type="text"
+           value={this.state.date_packed}
+           placeholder="05-05-17"
+           onChange={this.handlePackedChange}
+         />
+       </InputGroup>
+     </FormGroup>
 
-  >
-    <ControlLabel>Unit Number</ControlLabel>
-    <FormControl
-      type="text"
-      value={this.state.value}
-      placeholder="example 203"
-      onChange={this.handleChange}
-    />
-    <FormControl.Feedback />
-    <HelpBlock>Please enter number only</HelpBlock>
-  </FormGroup>
+     <FormGroup>
+      <InputGroup>
+        <InputGroup.Button>
+          <Button>Stored Date</Button>
+        </InputGroup.Button>
+        <FormControl
+          type="text"
+          value={this.state.date_stored}
+          placeholder="05-10-17"
+          onChange={this.handleStoredChange}
+        />
+      </InputGroup>
+     </FormGroup>
 
-  <FormGroup>
-   <InputGroup>
-     <InputGroup.Button>
-       <Button>Packed Date</Button>
-     </InputGroup.Button>
-     <FormControl type="text" placeholder="05-01-17" />
-   </InputGroup>
- </FormGroup>
+      <FormGroup controlId="formControlsSelect">
+         <ControlLabel>Room</ControlLabel>
+         <FormControl
+           onChange={this.handleRoomChange}
+           componentClass="select"
+           placeholder="Select">
+           <option value="select">Select</option>
+           <option value={this.state.room}>Living Room</option>
+           <option value={this.state.room}>Kitchen</option>
+           <option value={this.state.room}>Dining Room</option>
+           <option value={this.state.room}>Master Bedroom</option>
+           <option value={this.state.room}>Second Bedroom</option>
+           <option value={this.state.room}>Bathroom</option>
+         </FormControl>
+       </FormGroup>
 
- <FormGroup>
-  <InputGroup>
-    <InputGroup.Button>
-      <Button>Stored Date</Button>
-    </InputGroup.Button>
-    <FormControl type="text" placeholder="05-05-17"/>
-  </InputGroup>
- </FormGroup>
-
-  <FormGroup controlId="formControlsSelect">
-     <ControlLabel>Room</ControlLabel>
-     <FormControl componentClass="select" placeholder="select">
-       <option value="select">Select Room</option>
-       <option value="living_room">Living Room</option>
-       <option value="kitchen">Kitchen</option>
-       <option value="dining">Dining Room</option>
-       <option value="master_bedroom">Master Bedroom</option>
-       <option value="second_bedroom">Second Bedroom</option>
-       <option value="bathroom">Bathroom</option>
-     </FormControl>
-   </FormGroup>
-
-   <FormGroup controlId="formControlsSelect">
-      <ControlLabel>Unit Location</ControlLabel>
-      <FormControl componentClass="select" placeholder="select">
-        <option value="select">Select Location</option>
-        <option value="front_left">Front Left</option>
-        <option value="front_center">Front Center</option>
-        <option value="front_right">Front Right</option>
-        <option value="middle_left">Middle Left</option>
-        <option value="middle_center">Middle Center</option>
-        <option value="middle_right">Middle Right</option>
-        <option value="back_left">Back Left</option>
-        <option value="back_center">Back Center</option>
-        <option value="back_right">Back Right</option>
-      </FormControl>
-    </FormGroup>
+       <FormGroup controlId="formControlsSelect">
+          <ControlLabel>Unit Location</ControlLabel>
+          <FormControl
+            onChange={this.handleLocationChange}
+            componentClass="select"
+            placeholder="select">
+            <option value="select">Select</option>
+            <option value={this.state.unit_location}>Front Left</option>
+            <option value={this.state.unit_location}>Front Center</option>
+            <option value={this.state.unit_location}>Front Right</option>
+            <option value={this.state.unit_location}>Middle Left</option>
+            <option value={this.state.unit_location}>Middle Center</option>
+            <option value={this.state.unit_location}>Middle Right</option>
+            <option value={this.state.unit_location}>Back Left</option>
+            <option value={this.state.unit_location}>Back Center</option>
+            <option value={this.state.unit_location}>Back Right</option>
+          </FormControl>
+        </FormGroup>
 
 
-   <FormGroup controlId="formControlsTextarea">
-   <ControlLabel>Description</ControlLabel>
-   <FormControl componentClass="textarea" placeholder="description of items to be packed in this box" />
- </FormGroup>
- <Button type="submit">
-      Add Items
-    </Button>
-
+       <FormGroup controlId="formControlsTextarea">
+       <ControlLabel>Description</ControlLabel>
+       <FormControl
+         componentClass="textarea"
+         value={this.state.description}
+         placeholder="Add a helpful description of the items going into the box"
+         onChange={this.handleDescriptionChange}
+       />
+     </FormGroup>
+     <Button type="submit">
+          Add Box
+        </Button>
 </form>
+
 
     );
   }

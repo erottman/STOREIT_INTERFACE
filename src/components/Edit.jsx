@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { Checkbox, Form, inline, HelpBlock, InputGroup, Image, DropdownButton, Grid, Row, Col, Thumbnail, Button,FormGroup , ControlLabel, FormControl } from 'react-bootstrap'
 import '../App.css'
+import { browserHistory } from 'react-router'
 import axios from 'axios'
 
 
@@ -54,12 +55,17 @@ handleSubmit(e) {
     e.preventDefault()
     axios.put('http://localhost:3000/api/boxes/1', this.state.values)
       .then(response => {
-        console.log(response.data);
-        this.setState({
-          box: response.data,
-        })
+        if(response.data.error){
+          alert("Please fill in all required data")
+        }else {
+          browserHistory.push('/items')
+        }
       })
-  }
+      .catch(err => {
+        console.error(err)
+        alert("Please fill in all required data")
+        })
+      }
 
 
     handleIdChange(e) {
