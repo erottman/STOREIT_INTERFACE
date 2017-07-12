@@ -203,35 +203,35 @@ handleSubmit(e) {
       <FormGroup controlId="formControlsSelect">
          <ControlLabel>Room</ControlLabel>
          <FormControl
-           onChange={this.handleRoomChange}
+           onChange={this.handleRoomChange.bind(this)}
            componentClass="select"
            placeholder={this.state.box.room}>
-           <option value="select">{this.state.box.room}</option>
-           <option value={this.state.values.room}>Living Room</option>
-           <option value={this.state.values.room}>Kitchen</option>
-           <option value={this.state.values.room}>Dining Room</option>
-           <option value={this.state.values.room}>Master Bedroom</option>
-           <option value={this.state.values.room}>Second Bedroom</option>
-           <option value={this.state.values.room}>Bathroom</option>
+           <option value="select">Select</option>
+           <option value="Living Room">Living Room</option>
+           <option value="Kitchen">Kitchen</option>
+           <option value="Dining Room">Dining Room</option>
+           <option value="Master Bedroom">Master Bedroom</option>
+           <option value="Second Bedroom">Second Bedroom</option>
+           <option value="Bathroom">Bathroom</option>
          </FormControl>
        </FormGroup>
 
        <FormGroup controlId="formControlsSelect">
           <ControlLabel>Unit Location</ControlLabel>
           <FormControl
-            onChange={this.handleLocationChange}
+            onChange={this.handleLocationChange.bind(this)}
             componentClass="select"
             placeholder="select">
-            <option value="select">{this.state.box.unit_location}</option>
-            <option value={this.state.values.unit_location}>Front Left</option>
-            <option value={this.state.values.unit_location}>Front Center</option>
-            <option value={this.state.values.unit_location}>Front Right</option>
-            <option value={this.state.values.unit_location}>Middle Left</option>
-            <option value={this.state.values.unit_location}>Middle Center</option>
-            <option value={this.state.values.unit_location}>Middle Right</option>
-            <option value={this.state.values.unit_location}>Back Left</option>
-            <option value={this.state.values.unit_location}>Back Center</option>
-            <option value={this.state.values.unit_location}>Back Right</option>
+            <option value="select">Select</option>
+            <option value="front_left">Front Left</option>
+            <option value="front_center">Front Center</option>
+            <option value="front_right">Front Right</option>
+            <option value="middle_left">Middle Left</option>
+            <option value="middle_center">Middle Center</option>
+            <option value="middle_right">Middle Right</option>
+            <option value="back_left">Back Left</option>
+            <option value="back_center">Back Center</option>
+            <option value="back_right">Back Right</option>
           </FormControl>
         </FormGroup>
 

@@ -10,6 +10,7 @@ class Search extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      box: {},
       id:'',
     }
     this.handleSubmitGet = this.handleSubmitGet.bind(this)
@@ -29,7 +30,10 @@ class Search extends Component {
         console.log(id);
         alert("Box does not exist")
       } else {
-        browserHistory.push('/items')
+        this.setState({
+          box : response.data,
+        })
+          browserHistory.push('/items')
       }
   })
     .catch(err => {

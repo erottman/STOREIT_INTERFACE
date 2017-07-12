@@ -44,7 +44,7 @@ class Login extends Component {
     })
     .catch(err => {
       console.error(err)
-      alert("Username or password does not exist 333")
+      alert("Username or password does not exist ")
     })
   }
 
