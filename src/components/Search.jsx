@@ -18,28 +18,26 @@ class Search extends Component {
   }
 
   handleSubmitGet(event) {
+    console.log('look',this.state);
     event.preventDefault()
+    browserHistory.push('/items?id=' + this.state.id)
 
-    const id = {
-      id: this.state.id,
-    }
-
-    axios.get('http://localhost:3000/api/boxes/', id )
-    .then(response => {
-      if (response.data.error){
-        console.log(id);
-        alert("Box does not exist")
-      } else {
-        this.setState({
-          box : response.data,
-        })
-          browserHistory.push('/items')
-      }
-  })
-    .catch(err => {
-      console.error(err)
-      alert("Box does not exist")
-      })
+  //   axios.get(`http://localhost:3000/api/boxes/${this.state.id}`)
+  //   .then(response => {
+  //     if (response.data.error){
+  //       alert("Box does not exist")
+  //     } else {
+  //       console.log('hello', response.data);
+  //       this.setState({
+  //         box : response.data,
+  //       })
+  //         browserHistory.push('/items?id=')
+  //     }
+  // })
+  //   .catch(err => {
+  //     console.error(err)
+  //     alert("Box does not exist")
+  //     })
   }
 
 

@@ -5,11 +5,34 @@ import '../App.css'
 import CurrentItems from './CurrentItems'
 import AddItems from './AddItems'
 import Items  from '../images/items.png'
+import axios from 'axios'
 
 
 class ItemsPage extends Component {
-  render() {
+  constructor(props) {
+    super(props)
+      this.state = {
+        box: {},
+      }
+    }
 
+  componentDidMount() {
+   //axios.get(`/api/users/${this.props.params.id}`)
+   axios.get(`http://localhost:3000/api/boxes/${this.props.location.query.id}`)
+      .then(response => {
+        console.log(response);
+        this.setState({
+          box : response.data,
+        })
+      })
+      .catch(err => {
+        console.log('error', err);
+      })
+    }
+
+
+  render() {
+    console.log(this.props);
     const thumbnailInstance = (
     <Grid>
       <Row>
