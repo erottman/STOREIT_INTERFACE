@@ -3,23 +3,44 @@ import { Link } from 'react-router'
 import { Table, Accordion, ListGroup, ListGroupItem, Panel, Image, DropdownButton, Grid, Row, Col, Thumbnail, Button,FormGroup , ControlLabel, FormControl } from 'react-bootstrap'
 import '../App.css'
 import EditItem from './EditItem'
+import ItemImg  from '../images/toaster.jpg'
+import axios from 'axios'
 
 
 
 class Item extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      item: {},
+    }
+  }
+
+  componentDidMount() {
+   axios.get(`http://localhost:3000/api/items/${this.props.location.query.id}`)
+      .then(response => {
+        console.log(response);
+        this.setState({
+          item : response.data,
+        })
+      })
+      .catch(err => {
+        console.log('error', err);
+      })
+    }
+
 
 
   render() {
-
     const thumbnailInstance = (
     <Grid>
       <Row>
       <Col xs={12} sm={12}>
-        <Thumbnail src="https://images-na.ssl-images-amazon.com/images/I/71-rs5lCeRL._SL256_.jpg" alt="260x260">
-          <h3>Toaster Oven</h3>
-          <p> New toaster with bagel width </p>
-          <p>Quantity: 1</p>
-          <p>Value : $32.99 </p>
+        <Thumbnail src={ItemImg} alt="260x260">
+          <h3>{this.state.item.name}</h3>
+          <p> {this.state.item.description} </p>
+          <p>Quantity: {this.state.item.quantity}</p>
+          <p>Value : {this.state.item.value} </p>
         </Thumbnail>
       </Col>
       </Row>
