@@ -32,16 +32,16 @@ class ItemsPage extends Component {
 
 
   render() {
-    console.log(this.props);
     const thumbnailInstance = (
     <Grid>
       <Row>
       <Col xs={12} sm={12}>
         <Thumbnail src={Items} alt="260x260">
-          <h3>Manage Items</h3>
-          <p>View, Add, and Delete Current Items in a Box</p>
-          <p>Easily look-up an items Details and Value</p>
-          <p>Boxe= 2  Items=  4  Value= $150</p>
+          <h3>{this.state.box.identifier}</h3>
+          <p>{this.state.box.description}</p>
+          <p>Room: {this.state.box.room} </p>
+          <p>Date Packed: {this.state.box.date_packed} | Date Stored: {this.state.box.date_stored}</p>
+          <p>Unit Location: {this.state.box.unit_location} |  Value: $450 </p>
         </Thumbnail>
       </Col>
       </Row>

@@ -37,7 +37,7 @@ class Add extends Component {
         if(response.data.error){
           alert("Please fill in all required data")
         }else {
-          browserHistory.push('/items')
+          browserHistory.push('/items?id=' + this.state.id)
         }
       })
       .catch(err => {

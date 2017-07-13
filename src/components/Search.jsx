@@ -21,23 +21,6 @@ class Search extends Component {
     console.log('look',this.state);
     event.preventDefault()
     browserHistory.push('/items?id=' + this.state.id)
-
-  //   axios.get(`http://localhost:3000/api/boxes/${this.state.id}`)
-  //   .then(response => {
-  //     if (response.data.error){
-  //       alert("Box does not exist")
-  //     } else {
-  //       console.log('hello', response.data);
-  //       this.setState({
-  //         box : response.data,
-  //       })
-  //         browserHistory.push('/items?id=')
-  //     }
-  // })
-  //   .catch(err => {
-  //     console.error(err)
-  //     alert("Box does not exist")
-  //     })
   }
 
 
