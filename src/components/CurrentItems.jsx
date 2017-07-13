@@ -2,55 +2,67 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { Table, ListGroup, ListGroupItem } from 'react-bootstrap'
 import '../App.css'
+import axios from 'axios'
 
 
 class CurrentItems extends Component {
-  render() {
+  constructor(props) {
+    super(props)
+    this.state = {
+      items:[],
+    }
+  }
 
-function alertClicked() {
-  alert('You clicked the third ListGroupItem');
-}
+  componentDidMount() {
+   axios.get("http://localhost:3000/api/items")
+      .then(response => {
+        console.log('noodle',response.data);
+        this.setState({
+          items : response.data,
+        })
+      })
+      .catch(err => {
+        console.log('error', err);
+      })
+    }
 
-const listgroupInstance = (
+  makeItemTableRow(item) {
+    console.log(item);
+    return (
+      <tr>
+        <td>1</td>
+        <td>{item.name}</td>
+        <td>{item.quantity}</td>
+        <td>{item.value}</td>
+      </tr>
+    )
+  }
+
+
+
+render() {
+  console.log('ctas', this.state.items[0]);
+  return (
     <Table striped bordered condensed hover>
       <thead>
         <tr>
           <th>#</th>
-          <th>Item Name</th>
+          <th>Name</th>
           <th>Qty</th>
           <th>Value</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Toaster Oven</td>
-          <td>1</td>
-          <td>$35.99</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Forks</td>
-          <td>10</td>
-          <td>$12</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Microwave</td>
-          <td>1</td>
-          <td>$150</td>
-        </tr>
+      {this.state.items.map((item) => {
+        return this.makeItemTableRow(item)
+      })}
       </tbody>
     </Table>
-
-
-);
-  return (
-      <div>
-      <div> {listgroupInstance}</div>
-    </div>
     )
   }
 }
+
+
+
 
 export default CurrentItems

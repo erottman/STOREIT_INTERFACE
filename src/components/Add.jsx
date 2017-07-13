@@ -31,13 +31,15 @@ class Add extends Component {
 
   handleSubmitPost(e) {
     e.preventDefault()
-    console.log('look',this.state);
+
     axios.post('http://localhost:3000/api/boxes', this.state)
       .then(response => {
         if(response.data.error){
           alert("Please fill in all required data")
         }else {
-          browserHistory.push('/items?id=' + this.state.id)
+          console.log('kittnes',response.data);
+          browserHistory.push('/items?id=' + response.data.id)
+
         }
       })
       .catch(err => {

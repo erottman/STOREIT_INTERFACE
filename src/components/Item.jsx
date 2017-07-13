@@ -7,6 +7,8 @@ import EditItem from './EditItem'
 
 
 class Item extends Component {
+
+
   render() {
 
     const thumbnailInstance = (
