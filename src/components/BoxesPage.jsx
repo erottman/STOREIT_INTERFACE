@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import { Accordion, ListGroup, ListGroupItem, Panel, Image, DropdownButton, Grid, Row, Col, Thumbnail, Button,FormGroup , ControlLabel, FormControl } from 'react-bootstrap'
 import '../App.css'
 import Search from './Search'
+import CurrentBoxes from './CurrentBoxes'
 import Add from './Add'
 import Edit from './Edit'
 import Boxes  from '../images/manageboxes.png'
@@ -49,7 +50,7 @@ class BoxesPage extends Component {
           <h3>Manage Storage</h3>
           <p>Add boxes with item details and storage location</p>
           <p>Easily look-up boxes to view and edit item details</p>
-          <p>Boxes= {this.state.boxes.length}  Items=  {this.state.items.length}   Value=${this.state.value}</p>
+          <p>Total Boxes= {this.state.boxes.length} | Total Items=  {this.state.items.length}  | Total Value=${this.state.value}</p>
         </Thumbnail>
       </Col>
       </Row>
@@ -58,13 +59,16 @@ class BoxesPage extends Component {
 
   const accordionInstance = (
   <Accordion>
-    <Panel header="Manage Items" eventKey="1">
+    <Panel header="Current Boxes" eventKey="1">
+    <CurrentBoxes />
+    </Panel>
+    <Panel header="Manage Items" eventKey="2">
     <Search />
     </Panel>
-    <Panel header="Add Boxes" eventKey="2">
+    <Panel header="Add Boxes" eventKey="3">
     <Add />
     </Panel>
-    <Panel header="Edit or Delete Boxes" eventKey="3">
+    <Panel header="Edit or Delete Boxes" eventKey="4">
     <Edit />
     </Panel>
   </Accordion>
