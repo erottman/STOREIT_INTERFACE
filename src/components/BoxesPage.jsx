@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { Accordion, ListGroup, ListGroupItem, Panel, Image, DropdownButton, Grid, Row, Col, Thumbnail, Button,FormGroup , ControlLabel, FormControl } from 'react-bootstrap'
 import '../App.css'
-import Search from './Search'
 import CurrentBoxes from './CurrentBoxes'
 import Add from './Add'
+import Delete from './Delete'
 import Edit from './Edit'
 import Boxes  from '../images/manageboxes.png'
 import axios from 'axios'
@@ -62,14 +62,14 @@ class BoxesPage extends Component {
     <Panel header="Current Boxes" eventKey="1">
     <CurrentBoxes />
     </Panel>
-    <Panel header="Manage Items" eventKey="2">
-    <Search />
-    </Panel>
     <Panel header="Add Boxes" eventKey="3">
     <Add />
     </Panel>
-    <Panel header="Edit or Delete Boxes" eventKey="4">
+    <Panel header="Edit Boxes" eventKey="4">
     <Edit />
+    </Panel>
+    <Panel header="Delete Boxes" eventKey="5">
+    <Delete />
     </Panel>
   </Accordion>
 );
