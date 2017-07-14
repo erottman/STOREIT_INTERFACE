@@ -2,25 +2,29 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { Addon, Checkbox, Form, inline, HelpBlock, InputGroup, Image, DropdownButton, Grid, Row, Col, Thumbnail, Button,FormGroup , ControlLabel, FormControl } from 'react-bootstrap'
 import '../App.css'
+import axios from 'axios'
 
 
-const EditItem = React.createClass({
-  getInitialState() {
-    return {
-      value: ''
-    };
-  },
+class EditItem extends Component {
+  constructor(props) {
+    super(props)
+    this.state= {
+      item: {},
+    }
+  }
 
-  getValidationState() {
-    const length = this.state.value.length;
-    if (length > 10) return 'success';
-    else if (length > 5) return 'warning';
-    else if (length > 0) return 'error';
-  },
-
-  handleChange(e) {
-    this.setState({ value: e.target.value });
-  },
+  componentDidMount() {
+   axios.get("http://localhost:3000/api/items/1")
+      .then(response => {
+        console.log(response);
+        this.setState({
+          item : response.data,
+        })
+      })
+      .catch(err => {
+        console.log('error', err);
+      })
+    }
 
   render() {
     return (
@@ -28,7 +32,6 @@ const EditItem = React.createClass({
 
   <FormGroup
     controlId="formBasicText"
-    validationState={this.getValidationState()}
   >
     <ControlLabel>Item Name</ControlLabel>
     <FormControl
@@ -92,7 +95,7 @@ const EditItem = React.createClass({
 
     );
   }
-});
+}
 
 
 export default EditItem
