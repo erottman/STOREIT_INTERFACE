@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import { HelpBlock, InputGroup, Table, Accordion, ListGroup, ListGroupItem, Panel, Image, DropdownButton, Grid, Row, Col, Thumbnail, Button,FormGroup , ControlLabel, FormControl } from 'react-bootstrap'
 import '../App.css'
 import ItemImg  from '../images/toaster.jpg'
+// import DeleteItem from './DeleteItem'
 import axios from 'axios'
 
 
@@ -134,7 +135,7 @@ class Item extends Component {
 
   const accordionInstance = (
   <Accordion>
-    <Panel header="Edit Item" eventKey="2">
+    <Panel header="Edit Item" eventKey="1">
 
   <form onSubmit={this.handleSubmitPut}>
     <FormGroup
@@ -213,24 +214,22 @@ class Item extends Component {
    </FormGroup>
 
  <Button type="submit">
-      Edit Item
+      Update Item
     </Button>
 
 </form>
     </Panel>
+    <Panel header="Delete Item" eventKey="2">
+    {/* <DeleteItem /> */}
+    </Panel>
   </Accordion>
 );
 
-  const button = (
-    <Button type="submit">
-         Delete Item
-       </Button>
-  )
+
     return (
       <div>
       <div> {thumbnailInstance}</div>
       <div> {accordionInstance}</div>
-        <div> {button}</div>
     </div>
     )
   }

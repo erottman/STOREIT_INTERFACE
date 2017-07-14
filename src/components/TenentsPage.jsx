@@ -101,7 +101,7 @@ class TenentsPage extends Component {
   const accordionInstance = (
   <Accordion>
     <Panel header="Manage Profile" eventKey="1">
-    <ManageProfile />
+    <ManageProfile tenent={this.state.tenent} />
     </Panel>
   </Accordion>
 );
