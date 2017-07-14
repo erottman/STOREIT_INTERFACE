@@ -15,23 +15,10 @@ class CurrentItems extends Component {
     this.fetchItem = this.fetchItem.bind(this)
   }
 
-  fetchItem(e) {
-    axios.get("http://localhost:3000/api/items/1")
-      .then(response => {
-        if(response.data.error){
-          alert("Please fill in all required data")
-        }else {
-          console.log('kittnes',response.data);
-          browserHistory.push('/item?id=')
-
-        }
-      })
-      .catch(err => {
-        console.error(err)
-        alert("Please fill in all required data")
-        })
+  fetchItem(item) {
+    console.log('kittnes', item);
+    browserHistory.push('/item?id=' + item.id )
     }
-
 
 
   componentDidMount() {

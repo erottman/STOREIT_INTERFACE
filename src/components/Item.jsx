@@ -2,16 +2,15 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { HelpBlock, InputGroup, Table, Accordion, ListGroup, ListGroupItem, Panel, Image, DropdownButton, Grid, Row, Col, Thumbnail, Button,FormGroup , ControlLabel, FormControl } from 'react-bootstrap'
 import '../App.css'
-import EditItem from './EditItem'
 import ItemImg  from '../images/toaster.jpg'
 import axios from 'axios'
-
 
 
 class Item extends Component {
   constructor(props) {
     super(props)
       this.state = {
+        id: '',
         box_id: '',
         box_identifier:'',
         name: '',
@@ -31,10 +30,11 @@ class Item extends Component {
   }
 
   componentDidMount() {
-   axios.get("http://localhost:3000/api/items/1")
+   axios.get(`http://localhost:3000/api/items/${this.props.location.query.id}`)
       .then(response => {
         console.log(response);
         this.setState({
+          id: response.data.id,
           box_id: response.data.box_id,
           box_identifier: response.data.box_identifier,
           name: response.data.name,
@@ -52,7 +52,7 @@ class Item extends Component {
 
     handleSubmitPut(e) {
       e.preventDefault()
-      axios.put("http://localhost:3000/api/items/1", this.state)
+      axios.put(`http://localhost:3000/api/items/${this.state.id}`, this.state)
         .then(response => {
           if(response.data.error){
             alert("Please fill in all required data")
