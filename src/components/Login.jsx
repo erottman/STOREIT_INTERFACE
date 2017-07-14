@@ -35,7 +35,7 @@ class Login extends Component {
     axios.post('http://localhost:3000/api/users/login', user)
     .then(response => {
       if (response.data.error){
-        console.log(user);
+        console.log('kittens', response.data);
         alert("Username or password does not exist")
       } else {
         browserHistory.push('/tenents')

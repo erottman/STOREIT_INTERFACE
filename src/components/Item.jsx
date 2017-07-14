@@ -121,7 +121,7 @@ class Item extends Component {
     <Grid>
       <Row>
       <Col xs={12} sm={12}>
-        <Thumbnail src={ItemImg} alt="260x260">
+        <Thumbnail src={this.state.image_url} alt="260x260">
           <h3>{this.state.name}</h3>
           <p> {this.state.description} </p>
           <p>Quantity: {this.state.quantity}</p>

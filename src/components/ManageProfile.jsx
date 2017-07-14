@@ -165,8 +165,6 @@ class ManageProfile extends Component {
             placeholder={this.state.tenent.first_name}
             onChange={this.handleFirstNameChange}
           />
-          <FormControl.Feedback />
-          <HelpBlock>No longer than 10 Characters</HelpBlock>
         </FormGroup>
 
          <FormGroup
@@ -179,8 +177,6 @@ class ManageProfile extends Component {
             placeholder={this.state.tenent.last_name}
             onChange={this.handleLastNameChange.bind(this)}
           />
-          <FormControl.Feedback />
-          <HelpBlock>No longer than 10 Characters</HelpBlock>
         </FormGroup>
 
         <FormGroup

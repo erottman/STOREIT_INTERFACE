@@ -13,11 +13,12 @@ class TenentsPage extends Component {
         tenent: {},
         unit: [],
         facility: [],
+        boxes: [],
+        items: [],
       }
     }
 
   componentDidMount() {
-   //axios.get(`/api/users/${this.props.params.id}`)
    axios.get('http://localhost:3000/api/tenents/2')
       .then(response => {
         this.setState({
@@ -44,6 +45,24 @@ class TenentsPage extends Component {
      })
      .catch(err => {
      })
+
+   axios.get('http://localhost:3000/api/boxes')
+      .then(response => {
+        this.setState({
+          boxes : response.data,
+        })
+      })
+      .catch(err => {
+      })
+
+  axios.get('http://localhost:3000/api/items')
+     .then(response => {
+       this.setState({
+         items : response.data,
+       })
+     })
+     .catch(err => {
+     })
   }
 
 
@@ -59,8 +78,8 @@ class TenentsPage extends Component {
     const profileOverview = (
       <ListGroup className="profileOverview">
         <ListGroupItem href="/facility">{this.state.facility.name} </ListGroupItem>
-        <ListGroupItem href="/boxes">Storage Unit: {this.state.unit.unit_number}  |   Total Boxes:  42</ListGroupItem>
-        <ListGroupItem href="/items">Total Items: 324     |   Total Value: $8598</ListGroupItem>
+        <ListGroupItem href="/boxes">Storage Unit: {this.state.unit.unit_number}  |   Total Boxes:  {this.state.boxes.length} </ListGroupItem>
+        <ListGroupItem href="/boxes">Total Items: {this.state.items.length}     |   Total Value: $8598</ListGroupItem>
       </ListGroup>
     );
 
