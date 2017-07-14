@@ -54,7 +54,7 @@ class ItemsPage extends Component {
     <CurrentItems />
     </Panel>
     <Panel header="Add Items" eventKey="2">
-    <AddItems />
+    <AddItems box={this.state.box} />
     </Panel>
   </Accordion>
 );

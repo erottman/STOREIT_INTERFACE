@@ -11,7 +11,7 @@ class AddItems extends Component {
     super(props)
     this.state = {
       box_id: '',
-      box_identifier:'',
+      box_identifier: '',
       name: '',
       quantity:'',
       value:'',
@@ -19,13 +19,19 @@ class AddItems extends Component {
       image_url: '',
     }
     this.handleSubmitPost = this.handleSubmitPost.bind(this)
-    this.handleBoxIdChange = this.handleBoxIdChange.bind(this)
-    this.handleBoxIdentifierChange = this.handleBoxIdentifierChange.bind(this)
     this.handleNameChange = this.handleNameChange.bind(this)
     this.handleQuantityChange = this.handleQuantityChange.bind(this)
     this.handleValueChange = this.handleValueChange.bind(this)
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
     this.handleImageUrlChange = this.handleImageUrlChange.bind(this)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log("next props", nextProps);
+    this.setState({
+      box_id: nextProps.box.id,
+      box_identifier: nextProps.box.identifier,
+    })
   }
 
   handleSubmitPost(e) {
@@ -46,19 +52,6 @@ class AddItems extends Component {
         })
     }
 
-  handleBoxIdChange(e) {
-    console.log('string', e.target.value);
-    this.setState({
-      box_id: e.target.value,
-       });
-    }
-
-  handleBoxIdentifierChange(e) {
-    console.log('string', e.target.value);
-    this.setState({
-      box_identifier: e.target.value,
-     });
-  }
 
   handleNameChange(e) {
     console.log('string', e.target.value);
@@ -99,25 +92,6 @@ class AddItems extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmitPost}>
-        <FormGroup
-          controlId="formBasicText">
-          <ControlLabel>Box Id</ControlLabel>
-          <FormControl
-            type="text"
-            value={this.state.box_id}
-            placeholder="2"
-            onChange={this.handleBoxIdChange}/>
-        </FormGroup>
-
-      <FormGroup
-        controlId="formBasicText">
-        <ControlLabel>Box Identifier</ControlLabel>
-        <FormControl
-          type="text"
-          value={this.state.box_identifier}
-          placeholder="box2"
-          onChange={this.handleBoxIdentifierChange}/>
-      </FormGroup>
 
       <FormGroup
         controlId="formBasicText">

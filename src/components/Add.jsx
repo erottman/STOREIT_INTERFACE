@@ -109,7 +109,7 @@ class Add extends Component {
           <FormControl
             type="text"
             value={this.state.identifier}
-            placeholder="example box2"
+            placeholder={this.state.identifier}
             onChange={this.handleIdentifierChange}
           />
         </FormGroup>
