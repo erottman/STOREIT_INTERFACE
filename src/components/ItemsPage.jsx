@@ -13,6 +13,8 @@ class ItemsPage extends Component {
     super(props)
       this.state = {
         box: {},
+        items: [],
+        value: 0,
       }
     }
 
@@ -28,7 +30,27 @@ class ItemsPage extends Component {
       .catch(err => {
         console.log('error', err);
       })
-    }
+
+  axios.get('http://localhost:3000/api/items')
+    .then(response => {
+      this.setState({
+        items: response.data
+      })
+    })
+    .catch(err => {
+    })
+  }
+
+  getTotalValue() {
+      let total = 0;
+      this.state.items.map(item => {
+      total += parseInt(item.value)
+      console.log('value', item.value);
+    })
+    console.log('value', total);
+    return total;
+  }
+
 
 
   render() {
@@ -41,7 +63,8 @@ class ItemsPage extends Component {
           <p>{this.state.box.description}</p>
           <p>Room: {this.state.box.room} </p>
           <p>Date Packed: {this.state.box.date_packed} | Date Stored: {this.state.box.date_stored}</p>
-          <p>Unit Location: {this.state.box.unit_location} |  Value: $450 </p>
+          <p>Unit Location: {this.state.box.unit_location} </p>
+          <p>Total Items: {this.state.items.length} |  Value: ${this.getTotalValue(this.state.items)} </p>
         </Thumbnail>
       </Col>
       </Row>

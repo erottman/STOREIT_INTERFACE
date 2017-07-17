@@ -40,8 +40,9 @@ class AddItems extends Component {
         if(response.data.error){
           alert("Please fill in all required data")
         }else {
-            console.log('kittnes',response.data);
-          browserHistory.push('/item?id=' + response.data.id)
+          //   console.log('kittnes',response.data);
+          // browserHistory.push('/item?id=' + response.data.id)
+          window.location.reload()
         }
       })
       .catch(err => {

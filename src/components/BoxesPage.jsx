@@ -16,7 +16,7 @@ class BoxesPage extends Component {
     this.state = {
       boxes:[],
       items:[],
-      value : 400,
+      value : 0,
     }
   }
 
@@ -40,6 +40,17 @@ class BoxesPage extends Component {
       })
   }
 
+  getTotalValue() {
+      let total = 0;
+      this.state.items.map(item => {
+      total += parseInt(item.value)
+      console.log('value', item.value);
+    })
+    console.log('value', total);
+    return total;
+  }
+
+
   render() {
 
     const thumbnailInstance = (
@@ -50,7 +61,7 @@ class BoxesPage extends Component {
           <h3>Manage Storage</h3>
           <p>Add boxes with item details and storage location</p>
           <p>Easily look-up boxes to view and edit item details</p>
-          <p>Total Boxes= {this.state.boxes.length} | Total Items=  {this.state.items.length}  | Total Value=${this.state.value}</p>
+          <p>Total Boxes= {this.state.boxes.length} | Total Items=  {this.state.items.length}  | Total Value=$ {this.getTotalValue(this.state.items)}</p>
         </Thumbnail>
       </Col>
       </Row>
