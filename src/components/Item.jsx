@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import { HelpBlock, InputGroup, Table, Accordion, ListGroup, ListGroupItem, Panel, Image, DropdownButton, Grid, Row, Col, Thumbnail, Button,FormGroup , ControlLabel, FormControl } from 'react-bootstrap'
 import '../App.css'
 import ItemImg  from '../images/toaster.jpg'
-// import DeleteItem from './DeleteItem'
+import DeleteItems from './DeleteItems'
 import axios from 'axios'
 
 
@@ -11,6 +11,7 @@ class Item extends Component {
   constructor(props) {
     super(props)
       this.state = {
+        item: {},
         id: '',
         box_id: '',
         box_identifier:'',
@@ -35,6 +36,7 @@ class Item extends Component {
       .then(response => {
         console.log(response);
         this.setState({
+          item: response.data,
           id: response.data.id,
           box_id: response.data.box_id,
           box_identifier: response.data.box_identifier,
@@ -220,7 +222,7 @@ class Item extends Component {
 </form>
     </Panel>
     <Panel header="Delete Item" eventKey="2">
-    {/* <DeleteItem /> */}
+    <DeleteItems item={this.state.item} />
     </Panel>
   </Accordion>
 );
