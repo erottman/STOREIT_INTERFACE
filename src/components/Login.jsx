@@ -8,6 +8,7 @@ class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      id: '',
       username: '',
       password: ''
     }
@@ -35,18 +36,18 @@ class Login extends Component {
     axios.post('http://localhost:3000/api/users/login', user)
     .then(response => {
       if (response.data.error){
-        console.log('kittens', response.data);
         alert("Username or password does not exist")
       } else {
-        browserHistory.push('/tenents')
-      }
-      this.props.addUser(response.data)
-    })
+        console.log('kittens', response.data[0].id);
+        browserHistory.push('/tenents?id=' + response.data[0].id)
+    }
+  })
     .catch(err => {
       console.error(err)
       alert("Username or password does not exist ")
     })
   }
+
 
   render() {
     console.log('props', this.props.addUser);

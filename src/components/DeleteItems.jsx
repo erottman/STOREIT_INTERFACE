@@ -31,14 +31,14 @@ class DeleteItems extends Component {
   componentWillReceiveProps(nextProps) {
     console.log("next props", nextProps);
     this.setState({
-      id: nextProps.item.id,
-      box_id: nextProps.item.box_id,
-      box_identifier: nextProps.item.box_identifier,
-      name: nextProps.item.name,
-      quantity:nextProps.item.quantity,
-      value:nextProps.item.value,
-      description: nextProps.item.description,
-      image_url: nextProps.item.image_url,
+      id: nextProps.id,
+      box_id: nextProps.box_id,
+      box_identifier: nextProps.box_identifier,
+      name: nextProps.name,
+      quantity:nextProps.quantity,
+      value:nextProps.value,
+      description: nextProps.description,
+      image_url: nextProps.image_url,
     })
   }
 
@@ -49,7 +49,7 @@ class DeleteItems extends Component {
         if(response.data.error){
           alert("Please fill in all required data")
         }else {
-          browserHistory.push('/items')
+          browserHistory.push('/items?id=' + this.state.box_id)
         }
       })
       .catch(err => {

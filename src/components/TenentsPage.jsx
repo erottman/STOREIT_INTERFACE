@@ -19,7 +19,7 @@ class TenentsPage extends Component {
     }
 
   componentDidMount() {
-   axios.get('http://localhost:3000/api/tenents/2')
+   axios.get(`http://localhost:3000/api/tenents/${this.props.location.query.id}`)
       .then(response => {
         this.setState({
           tenent : response.data,

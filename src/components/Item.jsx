@@ -11,7 +11,6 @@ class Item extends Component {
   constructor(props) {
     super(props)
       this.state = {
-        item: {},
         id: '',
         box_id: '',
         box_identifier:'',
@@ -36,7 +35,6 @@ class Item extends Component {
       .then(response => {
         console.log(response);
         this.setState({
-          item: response.data,
           id: response.data.id,
           box_id: response.data.box_id,
           box_identifier: response.data.box_identifier,
@@ -54,8 +52,9 @@ class Item extends Component {
 
 
     handleSubmitPut(e) {
+      console.log('put', this.state);
       e.preventDefault()
-      axios.put(`http://localhost:3000/api/items/${this.state.id}`, this.state)
+    axios.put(`http://localhost:3000/api/items/${this.state.id}`, this.state)
         .then(response => {
           if(response.data.error){
             alert("Please fill in all required data")
@@ -72,7 +71,7 @@ class Item extends Component {
         handleBoxIdChange(e) {
           console.log('string', e.target.value);
           this.setState({
-            box_id: e.target.value,
+             box_id: e.target.value,
              });
           }
 
@@ -222,7 +221,7 @@ class Item extends Component {
 </form>
     </Panel>
     <Panel header="Delete Item" eventKey="2">
-    <DeleteItems item={this.state.item} />
+    <DeleteItems id={this.state.id} box_id={this.state.box_id} box_identifier={this.state.box_identifier} name={this.state.name} quantity={this.state.quantity}  value={this.state.value} description={this.state.description}  image_url={this.state.image_url} />
     </Panel>
   </Accordion>
 );
