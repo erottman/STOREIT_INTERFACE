@@ -28,7 +28,7 @@ class TenentsPage extends Component {
       .catch(err => {
       })
 
-  axios.get('http://localhost:3000/api/facilities/2')
+  axios.get(`http://localhost:3000/api/facilities/${this.props.location.query.id}`)
      .then(response => {
        this.setState({
          facility : response.data[0],
@@ -37,7 +37,7 @@ class TenentsPage extends Component {
      .catch(err => {
      })
 
-  axios.get('http://localhost:3000/api/units/2')
+  axios.get(`http://localhost:3000/api/units/${this.props.location.query.id}`)
      .then(response => {
        this.setState({
          unit : response.data[0],

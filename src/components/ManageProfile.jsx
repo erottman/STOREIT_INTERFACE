@@ -10,6 +10,7 @@ class ManageProfile extends Component {
   constructor(props) {
     super(props)
     this.state = {
+        tenent: {},
         id:'',
         user_id:'',
         first_name: '',
@@ -38,7 +39,6 @@ class ManageProfile extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("next props", nextProps);
     this.setState({
       id: nextProps.tenent.id,
       user_id: nextProps.tenent.user_id,
@@ -48,8 +48,8 @@ class ManageProfile extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    console.log('look Here', this.state);
-    axios.put(`http://localhost:3000/api/tenents/${this.state.id}`, this.state)
+    console.log('look Here', this.state.tenent);
+    axios.put(`http://localhost:3000/api/tenents/${this.state.id}`, this.state.tenent)
       .then(response => {
         if(response.data.error){
           alert("Please fill in all required data")
@@ -64,90 +64,75 @@ class ManageProfile extends Component {
     }
 
 
-  // componentDidMount() {
-  //  //axios.get(`/api/users/${this.props.params.id}`)
-  //  axios.get('http://localhost:3000/api/tenents/2')
-  //     .then(response => {
-  //       this.setState({
-  //         tenent : response.data,
-  //       })
-  //
-  //     })
-  //     .catch(err => {
-  //     })
-  //   }
-
-
-
   handleFirstNameChange(e) {
-    console.log('string', e.target.value);
-    this.setState({
+    this.setState({ tenent : {
       first_name: e.target.value,
+      }
      });
   }
 
   handleLastNameChange(e) {
-    console.log('string', e.target.value);
-    this.setState({
+    this.setState({ tenent : {
       last_name: e.target.value,
+      }
      });
   }
 
 
   handleAddressLine1Change(e) {
-    console.log('string', e.target.value);
-    this.setState({
+    this.setState({ tenent : {
       address_line_1: e.target.value,
+      }
      });
   }
 
   handleAddressLine2Change(e) {
-    console.log('string', e.target.value);
-    this.setState({
+    this.setState({ tenent : {
       address_line_2: e.target.value,
+      }
      });
   }
 
   handleCityChange(e) {
-    console.log('string', e.target.value);
-    this.setState({
+    this.setState({ tenent : {
       city: e.target.value,
+      }
      });
   }
 
   handleStateChange(e) {
-    console.log('string', e.target.value);
-    this.setState({
+    this.setState({ tenent : {
       state: e.target.value,
+      }
      });
   }
 
 
   handleZipChange(e) {
-    console.log('string', e.target.value);
-    this.setState({
+    this.setState({ tenent : {
       zip: e.target.value,
+      }
      });
   }
 
   handlePhoneChange(e) {
-    console.log('string', e.target.value);
-    this.setState({
+    this.setState({ tenent : {
       phone_number: e.target.value,
+      }
      });
   }
 
   handleEmailChange(e) {
-    console.log('string', e.target.value);
-    this.setState({
+    this.setState({ tenent : {
       email: e.target.value,
+      }
      });
   }
 
   handleImageUrlChange(e) {
-    console.log('string', e.target.value);
-    this.setState({
+    this.setState({ tenent : {
       image_url: e.target.value,
+      }
      });
   }
 
@@ -160,7 +145,7 @@ class ManageProfile extends Component {
           <ControlLabel>First Name</ControlLabel>
           <FormControl
             type="text"
-            value={this.state.first_name}
+            value={this.state.tenent.first_name}
             placeholder={this.props.tenent.first_name}
             onChange={this.handleFirstNameChange}
           />
@@ -172,7 +157,7 @@ class ManageProfile extends Component {
           <ControlLabel>Last Name</ControlLabel>
           <FormControl
             type="text"
-            value={this.state.last_name}
+            value={this.state.tenent.last_name}
             placeholder={this.props.tenent.last_name}
             onChange={this.handleLastNameChange.bind(this)}
           />
@@ -184,7 +169,7 @@ class ManageProfile extends Component {
           <ControlLabel>Address Line 1</ControlLabel>
           <FormControl
             type="text"
-            value={this.state.address_line_1}
+            value={this.state.tenent.address_line_1}
             placeholder={this.props.tenent.address_line_1}
             onChange={this.handleAddressLine1Change}
           />
@@ -196,7 +181,7 @@ class ManageProfile extends Component {
           <ControlLabel>Address Line 2</ControlLabel>
           <FormControl
             type="text"
-            value={this.state.address_line_2}
+            value={this.state.tenent.address_line_2}
             placeholder={this.props.tenent.address_line_2}
             onChange={this.handleAddressLine2Change}
           />
@@ -206,7 +191,7 @@ class ManageProfile extends Component {
             <InputGroup>
               <InputGroup.Addon>City </InputGroup.Addon>
               <FormControl type="text"
-                value={this.state.city}
+                value={this.state.tenent.city}
                 placeholder={this.props.tenent.city}
                 onChange={this.handleCityChange}
               />
@@ -217,7 +202,7 @@ class ManageProfile extends Component {
             <InputGroup>
               <InputGroup.Addon>State </InputGroup.Addon>
               <FormControl type="text"
-                value={this.state.state}
+                value={this.state.tenent.state}
                 placeholder={this.props.tenent.state}
                 onChange={this.handleStateChange}
               />
@@ -228,7 +213,7 @@ class ManageProfile extends Component {
             <InputGroup>
               <InputGroup.Addon>Zip </InputGroup.Addon>
               <FormControl type="text"
-                value={this.state.zip}
+                value={this.state.tenent.zip}
                 placeholder={this.props.tenent.zip}
                 onChange={this.handleZipChange}
               />
@@ -239,7 +224,7 @@ class ManageProfile extends Component {
             <InputGroup>
               <InputGroup.Addon>Phone #</InputGroup.Addon>
               <FormControl type="text"
-                value={this.state.phone_number}
+                value={this.state.tenent.phone_number}
                 placeholder={this.props.tenent.phone_number}
                 onChange={this.handlePhoneChange}
               />
@@ -251,7 +236,7 @@ class ManageProfile extends Component {
             <InputGroup>
               <InputGroup.Addon>Email @</InputGroup.Addon>
               <FormControl type="text"
-                value={this.state.email}
+                value={this.state.tenent.email}
                 placeholder={this.props.tenent.email}
                 onChange={this.handleEmailChange}
               />
@@ -263,7 +248,7 @@ class ManageProfile extends Component {
            <InputGroup>
              <InputGroup.Addon>Image Url @</InputGroup.Addon>
              <FormControl type="text"
-               value={this.state.image_url}
+               value={this.state.tenent.image_url}
                placeholder={this.props.tenent.image_url}
                onChange={this.handleImageUrlChange}
              />
