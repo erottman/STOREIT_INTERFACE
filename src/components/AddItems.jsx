@@ -27,7 +27,6 @@ class AddItems extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("next props", nextProps);
     this.setState({
       box_id: nextProps.box.id,
       box_identifier: nextProps.box.identifier,
@@ -36,7 +35,6 @@ class AddItems extends Component {
 
   handleSubmitPost(e) {
     e.preventDefault()
-    console.log('look',this.state);
     axios.post('http://localhost:3000/api/items', this.state)
       .then(response => {
         if(response.data.error){
@@ -54,35 +52,30 @@ class AddItems extends Component {
 
 
   handleNameChange(e) {
-    console.log('string', e.target.value);
     this.setState({
       name: e.target.value,
      });
   }
 
   handleQuantityChange(e) {
-    console.log('string', e.target.value);
     this.setState({
       quantity: e.target.value,
      });
   }
 
   handleValueChange(e) {
-    console.log('string', e.target.value);
     this.setState({
       value: e.target.value,
      });
   }
 
   handleDescriptionChange(e) {
-    console.log('string', e.target.value);
     this.setState({
       description: e.target.value,
      });
   }
 
   handleImageUrlChange(e) {
-    console.log('string', e.target.value);
     this.setState({
       image_url: e.target.value,
      });
