@@ -4,6 +4,7 @@ import { Addon, Checkbox, Form, inline, HelpBlock, InputGroup, Image, DropdownBu
 import '../App.css'
 import { browserHistory } from 'react-router'
 import axios from 'axios'
+import AUTH_URL from '../config/server.js'
 
 
 class ManageProfile extends Component {
@@ -48,8 +49,7 @@ class ManageProfile extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    console.log('look Here', this.state.tenent);
-    axios.put(`http://localhost:3000/api/tenents/${this.state.id}`, this.state.tenent)
+    axios.put(`${AUTH_URL}api/tenents/${this.state.id}`, this.state.tenent)
       .then(response => {
         if(response.data.error){
           alert("Please fill in all required data")

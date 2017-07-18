@@ -4,6 +4,7 @@ import { Accordion, ListGroup, ListGroupItem, Panel, Image, DropdownButton, Grid
 import '../App.css'
 import ManageProfile from './ManageProfile'
 import axios from 'axios'
+import AUTH_URL from '../config/server.js'
 
 
 class TenentsPage extends Component {
@@ -20,7 +21,7 @@ class TenentsPage extends Component {
     }
 
   componentDidMount() {
-   axios.get(`http://localhost:3000/api/tenents/${this.props.location.query.id}`)
+   axios.get(`${AUTH_URL}api/tenents/${this.props.location.query.id}`)
       .then(response => {
         this.setState({
           tenent : response.data,
@@ -29,7 +30,7 @@ class TenentsPage extends Component {
       .catch(err => {
       })
 
-  axios.get(`http://localhost:3000/api/facilities/${this.props.location.query.id}`)
+  axios.get(`${AUTH_URL}api/facilities/${this.props.location.query.id}`)
      .then(response => {
        this.setState({
          facility : response.data[0],
@@ -38,7 +39,7 @@ class TenentsPage extends Component {
      .catch(err => {
      })
 
-  axios.get(`http://localhost:3000/api/units/${this.props.location.query.id}`)
+  axios.get(`${AUTH_URL}api/units/${this.props.location.query.id}`)
      .then(response => {
        this.setState({
          unit : response.data[0],
@@ -47,7 +48,7 @@ class TenentsPage extends Component {
      .catch(err => {
      })
 
-   axios.get('http://localhost:3000/api/boxes')
+   axios.get(`${AUTH_URL}api/boxes`)
       .then(response => {
         this.setState({
           boxes : response.data,
@@ -56,7 +57,7 @@ class TenentsPage extends Component {
       .catch(err => {
       })
 
-  axios.get('http://localhost:3000/api/items')
+  axios.get(`${AUTH_URL}api/items`)
      .then(response => {
        this.setState({
          items : response.data,

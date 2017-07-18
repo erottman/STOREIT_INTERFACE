@@ -3,7 +3,7 @@ import '../App.css'
 import { Col, Checkbox, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap'
 import { browserHistory } from 'react-router'
 import axios from 'axios'
-import AUTH_URL from './server.js'
+import AUTH_URL from '../config/server.js'
 
 class Login extends Component {
   constructor(props) {
