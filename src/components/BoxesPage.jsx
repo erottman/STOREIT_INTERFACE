@@ -71,7 +71,7 @@ class BoxesPage extends Component {
           <h3>Manage Storage</h3>
           <p>Add boxes with item details and storage location</p>
           <p>Easily look-up boxes to view and edit item details</p>
-          <p>Total Boxes= {this.state.boxes.length} | Total Items=  {this.state.items.length}  | Total Value=$ {this.getTotalValue(this.state.items)}</p>
+          <p>Total Boxes= {this.state.boxes.length} | Total Items=  {this.getTotalQuantity(this.state.items)}  | Total Value= ${this.getTotalValue(this.state.items)}</p>
         </Thumbnail>
       </Col>
       </Row>

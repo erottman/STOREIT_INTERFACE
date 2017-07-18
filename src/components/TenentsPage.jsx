@@ -76,6 +76,16 @@ class TenentsPage extends Component {
     return total;
   }
 
+  getTotalQuantity() {
+      let total = 0;
+      this.state.items.map(item => {
+      total += item.quantity
+      console.log('quantity', item.quantity);
+    })
+    console.log('total', total);
+    return total;
+  }
+
 
 
 
@@ -91,7 +101,7 @@ class TenentsPage extends Component {
       <ListGroup className="profileOverview">
         <ListGroupItem href="/facility">{this.state.facility.name} </ListGroupItem>
         <ListGroupItem href="/boxes">Storage Unit: {this.state.unit.unit_number}  |   Total Boxes:  {this.state.boxes.length} </ListGroupItem>
-        <ListGroupItem href="/boxes">Total Items: {this.state.items.length}     |   Total Value: ${this.getTotalValue(this.state.items)}</ListGroupItem>
+        <ListGroupItem href="/boxes">Total Items: {this.getTotalQuantity(this.state.items)}     |   Total Value: ${this.getTotalValue(this.state.items)}</ListGroupItem>
       </ListGroup>
     );
 
