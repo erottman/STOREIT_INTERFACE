@@ -34,11 +34,20 @@ class ItemsPage extends Component {
 
   axios.get('http://localhost:3000/api/items')
     .then(response => {
-      this.setState({
-        items: response.data
+      let itemMatch = []
+      response.data.map(item => {
+
+      if(item.box_id === this.state.box.id) {
+          itemMatch.push(item)
+
+            this.setState({
+            items: itemMatch,
+          })
+        }
       })
     })
     .catch(err => {
+
     })
   }
 
@@ -46,9 +55,7 @@ class ItemsPage extends Component {
       let total = 0;
       this.state.items.map(item => {
       total += parseInt(item.value)
-      console.log('value', item.value);
     })
-    console.log('value', total);
     return total;
   }
 
@@ -56,9 +63,7 @@ class ItemsPage extends Component {
       let total = 0;
       this.state.items.map(item => {
       total += item.quantity
-      console.log('quantity', item.quantity);
     })
-    console.log('total', total);
     return total;
   }
 
@@ -85,7 +90,7 @@ class ItemsPage extends Component {
   const accordionInstance = (
   <Accordion>
     <Panel header="Current Items"  defaultActiveKey="1">
-    <CurrentItems />
+    <CurrentItems items={} />
     </Panel>
     <Panel header="Add Items" eventKey="2">
     <AddItems box={this.state.box} />
