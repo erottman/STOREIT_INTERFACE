@@ -17,13 +17,14 @@ class ItemsPage extends Component {
         quantity: 0,
         value: 0,
       }
+
     }
 
   componentDidMount() {
    //axios.get(`/api/users/${this.props.params.id}`)
    axios.get(`http://localhost:3000/api/boxes/${this.props.location.query.id}`)
       .then(response => {
-        console.log(response);
+        console.log("boxes",response.data);
         this.setState({
           box : response.data,
         })
@@ -34,15 +35,19 @@ class ItemsPage extends Component {
 
   axios.get('http://localhost:3000/api/items')
     .then(response => {
+      console.log('items', response.data);
+      console.log('id', this.props.location.query.id);
       let itemMatch = []
       response.data.map(item => {
+        console.log('item', item);
+      if(item.box_id == this.props.location.query.id) {
 
-      if(item.box_id === this.state.box.id) {
           itemMatch.push(item)
-
+          console.log('itemMatch', itemMatch);
             this.setState({
             items: itemMatch,
           })
+
         }
       })
     })
@@ -90,7 +95,7 @@ class ItemsPage extends Component {
   const accordionInstance = (
   <Accordion>
     <Panel header="Current Items"  defaultActiveKey="1">
-    <CurrentItems items={} />
+    <CurrentItems items={this.state.items} />
     </Panel>
     <Panel header="Add Items" eventKey="2">
     <AddItems box={this.state.box} />

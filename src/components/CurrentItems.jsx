@@ -16,23 +16,19 @@ class CurrentItems extends Component {
   }
 
   fetchItem(item) {
-    console.log('kittnes', item);
+
     browserHistory.push('/item?id=' + item.id )
     }
 
+    componentWillReceiveProps(nextProps) {
+      console.log('should be items', nextProps);
+      this.setState({
+        items: nextProps.items
 
-  componentDidMount() {
-   axios.get("http://localhost:3000/api/items")
-      .then(response => {
-        console.log('noodle',response.data);
-        this.setState({
-          items : response.data,
-        })
-      })
-      .catch(err => {
-        console.log('error', err);
       })
     }
+
+
 
   makeItemTableRow(item) {
     console.log(item);
