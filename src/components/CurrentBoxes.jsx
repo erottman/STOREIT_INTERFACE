@@ -4,6 +4,7 @@ import { Table, ListGroup, ListGroupItem } from 'react-bootstrap'
 import '../App.css'
 import axios from 'axios'
 import { browserHistory } from 'react-router'
+import AUTH_URL from '../config/server.js'
 
 
 class CurrentBoxes extends Component {
@@ -24,7 +25,7 @@ class CurrentBoxes extends Component {
 
 
   componentDidMount() {
-   axios.get("http://localhost:3000/api/boxes")
+   axios.get(`${AUTH_URL}api/boxes`)
       .then(response => {
         console.log('boxeslook here',response.data);
         this.setState({

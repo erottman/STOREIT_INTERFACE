@@ -4,6 +4,7 @@ import { Checkbox, Form, inline, HelpBlock, InputGroup, Image, DropdownButton, G
 import '../App.css'
 import { browserHistory } from 'react-router'
 import axios from 'axios'
+import AUTH_URL from '../config/server.js'
 
 
 class Add extends Component {
@@ -32,7 +33,7 @@ class Add extends Component {
   handleSubmitPost(e) {
     e.preventDefault()
 
-    axios.post('http://localhost:3000/api/boxes', this.state)
+    axios.post(`${AUTH_URL}api/boxes`, this.state)
       .then(response => {
         if(response.data.error){
           alert("Please fill in all required data")
@@ -50,49 +51,42 @@ class Add extends Component {
 
 
   handleIdentifierChange(e) {
-    console.log('string', e.target.value);
     this.setState({
       identifier: e.target.value,
      });
   }
 
   handleUnitChange(e) {
-    console.log('string', e.target.value);
     this.setState({
       unit_number: e.target.value,
      });
   }
 
   handlePackedChange(e) {
-    console.log('string', e.target.value);
     this.setState({
       date_packed: e.target.value,
      });
   }
 
   handleStoredChange(e) {
-    console.log('string', e.target.value);
     this.setState({
       date_stored: e.target.value,
      });
   }
 
   handleRoomChange(e) {
-    console.log('string', e.target.value);
     this.setState({
       room: e.target.value,
      });
   }
 
   handleLocationChange(e) {
-    console.log('string', e.target.value);
     this.setState({
       unit_location: e.target.value,
      });
   }
 
   handleDescriptionChange(e) {
-    console.log('string', e.target.value);
     this.setState({
       description: e.target.value,
      });

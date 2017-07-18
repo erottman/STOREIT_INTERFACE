@@ -8,6 +8,7 @@ import Delete from './Delete'
 import Edit from './Edit'
 import Boxes  from '../images/manageboxes.png'
 import axios from 'axios'
+import AUTH_URL from '../config/server.js'
 
 
 class BoxesPage extends Component {
@@ -21,7 +22,7 @@ class BoxesPage extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3000/api/boxes')
+    axios.get(`${AUTH_URL}api/boxes`)
       .then(response => {
         this.setState({
           boxes: response.data
@@ -30,7 +31,7 @@ class BoxesPage extends Component {
       .catch(err => {
       })
 
-    axios.get('http://localhost:3000/api/items')
+    axios.get(`${AUTH_URL}api/items`)
       .then(response => {
         this.setState({
           items: response.data
