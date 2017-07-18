@@ -3,6 +3,7 @@ import '../App.css'
 import { Col, Checkbox, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap'
 import { browserHistory } from 'react-router'
 import axios from 'axios'
+import AUTH_URL from './server.js'
 
 class Login extends Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class Login extends Component {
       password: this.state.password
     }
 
-    axios.post('http://localhost:3000/api/users/login', user)
+    axios.post(`${AUTH_URL}api/users/login`, user)
     .then(response => {
       if (response.data.error){
         alert("Username or password does not exist")

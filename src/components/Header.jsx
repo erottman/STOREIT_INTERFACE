@@ -17,9 +17,7 @@ class Header extends Component {
           <Nav>
           </Nav>
           <Nav pullRight>
-            <NavItem><Link className="nav-link" to="/products">Facilities</Link></NavItem>
-            {this.props.isLoggedIn === true ? <NavItem><Link className="nav-link" to="/login">LogOut</Link></NavItem>
-            : <NavItem><Link className="nav-link" to="/login">LogIn</Link></NavItem>}
+      
           </Nav>
         </Navbar.Collapse>
       </Navbar>
