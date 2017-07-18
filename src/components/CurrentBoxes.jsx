@@ -11,7 +11,7 @@ class CurrentBoxes extends Component {
     super(props)
     this.state = {
       boxes:[],
-      sortBy: 'name',
+
     }
     this.fetchBox = this.fetchBox.bind(this)
     this.sortTable = this.sortTable.bind(this)
@@ -49,7 +49,7 @@ class CurrentBoxes extends Component {
 
 sortTable(column) {
   let sortBoxes = this.state.boxes
-  // if(column === 'Date Stored') {
+
     sortBoxes.sort(function (a, b) {
       if(a[column] > b[column]) {
         return 1
@@ -62,7 +62,6 @@ sortTable(column) {
     this.setState({
       boxes: sortBoxes
     })
-  // }
 }
 
 

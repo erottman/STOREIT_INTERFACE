@@ -14,6 +14,7 @@ class ItemsPage extends Component {
       this.state = {
         box: {},
         items: [],
+        quantity: 0,
         value: 0,
       }
     }
@@ -51,6 +52,16 @@ class ItemsPage extends Component {
     return total;
   }
 
+  getTotalQuantity() {
+      let total = 0;
+      this.state.items.map(item => {
+      total += item.quantity
+      console.log('quantity', item.quantity);
+    })
+    console.log('total', total);
+    return total;
+  }
+
 
 
   render() {
@@ -64,7 +75,7 @@ class ItemsPage extends Component {
           <p>Room: {this.state.box.room} </p>
           <p>Date Packed: {this.state.box.date_packed} | Date Stored: {this.state.box.date_stored}</p>
           <p>Unit Location: {this.state.box.unit_location} </p>
-          <p>Total Items: {this.state.items.length} |  Value: ${this.getTotalValue(this.state.items)} </p>
+          <p>Total Items: {this.getTotalQuantity(this.state.items)} |  Value: ${this.getTotalValue(this.state.items)} </p>
         </Thumbnail>
       </Col>
       </Row>

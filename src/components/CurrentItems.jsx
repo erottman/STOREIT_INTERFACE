@@ -40,9 +40,26 @@ class CurrentItems extends Component {
       <tr onClick={() =>this.fetchItem(item)}>
         <td>{item.name}</td>
         <td>{item.quantity}</td>
-        <td>{item.value}</td>
+        <td>${item.value}</td>
       </tr>
     )
+  }
+
+  sortTable(column) {
+    let sortItems = this.state.items
+
+      sortItems.sort(function (a, b) {
+        if(a[column] > b[column]) {
+          return -1
+        }
+        if(a[column] < b[column] ) {
+          return 1
+        }
+        return 0
+      })
+      this.setState({
+        items: sortItems
+      })
   }
 
 
@@ -52,20 +69,15 @@ render() {
     <Table striped bordered condensed hover>
       <thead>
         <tr >
-          <th>Name</th>
-          <th>Qty</th>
-          <th>Value</th>
+          <th onClick={() => this.sortTable('name')}>Name</th>
+          <th onClick={() => this.sortTable('quantity')}>Qty</th>
+          <th onClick={() => this.sortTable('value')}>Value </th>
         </tr>
       </thead>
       <tbody>
       {this.state.items.map((item) => {
         return this.makeItemTableRow(item)
       })}
-      <tr>
-      <td>Total</td>
-      <td> 6 </td>
-      <td> $450 </td>
-    </tr>
       </tbody>
     </Table>
     )

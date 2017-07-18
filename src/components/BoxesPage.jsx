@@ -50,6 +50,16 @@ class BoxesPage extends Component {
     return total;
   }
 
+  getTotalQuantity() {
+      let total = 0;
+      this.state.items.map(item => {
+      total += item.quantity
+      console.log('quantity', item.quantity);
+    })
+    console.log('total', total);
+    return total;
+  }
+
 
   render() {
 

@@ -178,15 +178,15 @@ class Add extends Component {
             componentClass="select"
             placeholder="select">
             <option value="select">Select</option>
-            <option value="front_left">Front Left</option>
-            <option value="front_center">Front Center</option>
-            <option value="front_right">Front Right</option>
-            <option value="middle_left">Middle Left</option>
-            <option value="middle_center">Middle Center</option>
-            <option value="middle_right">Middle Right</option>
-            <option value="back_left">Back Left</option>
-            <option value="back_center">Back Center</option>
-            <option value="back_right">Back Right</option>
+            <option value="Front Left">Front Left</option>
+            <option value="Front Center">Front Center</option>
+            <option value="Front Right">Front Right</option>
+            <option value="Middle Left">Middle Left</option>
+            <option value="Middle Center">Middle Center</option>
+            <option value="Middle Right">Middle Right</option>
+            <option value="Back Left">Back Left</option>
+            <option value="Back Center">Back Center</option>
+            <option value="Back Right">Back Right</option>
           </FormControl>
         </FormGroup>
 
