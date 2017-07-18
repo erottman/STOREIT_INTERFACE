@@ -79,17 +79,18 @@ class BoxesPage extends Component {
   );
 
   const accordionInstance = (
+
   <Accordion>
-    <Panel header="Current Boxes" eventKey="1">
+    <Panel header="Current Boxes" defaultActiveKey="1" >
     <CurrentBoxes />
     </Panel>
-    <Panel header="Add Boxes" eventKey="3">
+    <Panel header="Add Boxes" eventKey="2">
     <Add />
     </Panel>
-    <Panel header="Edit Boxes" eventKey="4">
+    <Panel header="Edit Boxes" eventKey="3">
     <Edit />
     </Panel>
-    <Panel header="Delete Boxes" eventKey="5">
+    <Panel header="Delete Boxes" eventKey="4">
     <Delete />
     </Panel>
   </Accordion>

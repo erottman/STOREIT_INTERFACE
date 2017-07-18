@@ -37,8 +37,8 @@ class Add extends Component {
         if(response.data.error){
           alert("Please fill in all required data")
         }else {
-          console.log('kittnes',response.data);
-          browserHistory.push('/items?id=' + response.data.id)
+          // browserHistory.push('/items?id=' + response.data.id)
+          window.location.reload()
 
         }
       })

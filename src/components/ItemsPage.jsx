@@ -84,7 +84,7 @@ class ItemsPage extends Component {
 
   const accordionInstance = (
   <Accordion>
-    <Panel header="Current Items" eventKey="1">
+    <Panel header="Current Items"  defaultActiveKey="1">
     <CurrentItems />
     </Panel>
     <Panel header="Add Items" eventKey="2">
