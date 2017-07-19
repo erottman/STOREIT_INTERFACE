@@ -62,7 +62,8 @@ class Item extends Component {
           if(response.data.error){
             alert("Please fill in all required data")
           }else {
-            browserHistory.push('/item?id=' + response.data.id)
+            browserHistory.push('/items?id=' + this.state.box_id)
+            // browserHistory.push('/item?id=' + response.data.id)
             // window.location.reload()
           }
         })
