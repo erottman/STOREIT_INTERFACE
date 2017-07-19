@@ -19,6 +19,7 @@ class BoxesPage extends Component {
       items:[],
       value : 0,
     }
+    this.updateBoxes = this.updateBoxes.bind(this)
   }
 
   componentDidMount() {
@@ -40,6 +41,18 @@ class BoxesPage extends Component {
       .catch(err => {
       })
   }
+
+  updateBoxes() {
+    axios.get(`${AUTH_URL}api/boxes`)
+      .then(response => {
+            console.log('update boxes',response);
+        this.setState({
+          boxes: response.data
+        })
+      })
+      .catch(err => {
+      })
+    }
 
   getTotalValue() {
       let total = 0;
@@ -83,16 +96,16 @@ class BoxesPage extends Component {
 
   <Accordion>
     <Panel header="Current Boxes" defaultActiveKey="1" >
-    <CurrentBoxes />
+    <CurrentBoxes boxes={this.state.boxes} />
     </Panel>
     <Panel header="Add Boxes" eventKey="2">
-    <Add />
+    <Add updateBoxes={this.updateBoxes} />
     </Panel>
     <Panel header="Edit Boxes" eventKey="3">
-    <Edit />
+    <Edit updateBoxes={this.updateBoxes} />
     </Panel>
     <Panel header="Delete Boxes" eventKey="4">
-    <Delete />
+    <Delete updateBoxes={this.updateBoxes} />
     </Panel>
   </Accordion>
 );

@@ -62,7 +62,8 @@ handleSubmit(e) {
         if(response.data.error){
           alert("Please fill in all required data")
         }else {
-          window.location.reload()
+          this.props.updateBoxes()
+          // window.location.reload()
         }
       })
       .catch(err => {

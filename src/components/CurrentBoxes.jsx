@@ -24,18 +24,14 @@ class CurrentBoxes extends Component {
     }
 
 
-  componentDidMount() {
-   axios.get(`${AUTH_URL}api/boxes`)
-      .then(response => {
-        console.log('boxeslook here',response.data);
-        this.setState({
-          boxes : response.data,
-        })
-      })
-      .catch(err => {
-        console.log('error', err);
-      })
-    }
+  componentWillReceiveProps(nextProps) {
+    console.log('should be items', nextProps);
+    this.setState({
+      boxes: nextProps.boxes
+
+    })
+  }
+
 
   makeBoxTableRow(box) {
     console.log('rows', box);

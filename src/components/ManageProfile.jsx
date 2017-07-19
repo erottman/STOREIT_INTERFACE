@@ -55,7 +55,6 @@ class ManageProfile extends Component {
           alert("Please fill in all required data")
         } else {
           this.props.updateTenent(response.data)
-          //this.props.refreshdata(this.state.id)
         }
 
       })

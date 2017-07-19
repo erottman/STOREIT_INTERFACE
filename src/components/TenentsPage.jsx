@@ -74,20 +74,6 @@ class TenentsPage extends Component {
     })
   }
 
-  getRefreshedData(id) {
-    axios.get(`${AUTH_URL}api/tenents/${id}`)
-       .then(response => {
-         console.log(response);
-         return response.data;
-       })
-       .then((response) => {
-         this.setState({
-           tenent: response,
-         })
-       })
-       .catch(err => {
-       })
-  }
 
   getTotalValue() {
       let total = 0;

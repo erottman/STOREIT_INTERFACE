@@ -38,8 +38,8 @@ class Add extends Component {
         if(response.data.error){
           alert("Please fill in all required data")
         }else {
-          // browserHistory.push('/items?id=' + response.data.id)
-          window.location.reload()
+          this.props.updateBoxes()
+          // window.location.reload()
 
         }
       })

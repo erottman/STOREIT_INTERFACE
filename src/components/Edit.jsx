@@ -4,7 +4,7 @@ import { Checkbox, Form, inline, HelpBlock, InputGroup, Image, DropdownButton, G
 import '../App.css'
 import { browserHistory } from 'react-router'
 import axios from 'axios'
-
+import AUTH_URL from '../config/server.js'
 
 class Edit extends Component {
   constructor(props) {
@@ -62,8 +62,8 @@ handleSubmit(e) {
         if(response.data.error){
           alert("Please fill in all required data")
         }else {
-          // browserHistory.push('/items?id=' + this.state.id)
-          window.location.reload()
+          this.props.updateBoxes()
+          // window.location.reload()
         }
       })
       .catch(err => {
