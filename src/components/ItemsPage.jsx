@@ -59,8 +59,19 @@ class ItemsPage extends Component {
   updateItems() {
     axios.get(`${AUTH_URL}api/items`)
       .then(response => {
-        this.setState({
-          items: response.data
+        console.log('items', response.data);
+        console.log('id', this.props.location.query.id);
+        let itemMatch = []
+        response.data.map(item => {
+          console.log('item', item);
+        if(item.box_id == this.props.location.query.id) {
+
+            itemMatch.push(item)
+            console.log('itemMatch', itemMatch);
+              this.setState({
+              items: itemMatch,
+            })
+          }
         })
       })
       .catch(err => {
