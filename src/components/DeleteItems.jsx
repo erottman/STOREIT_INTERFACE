@@ -4,6 +4,7 @@ import { Addon, Checkbox, Form, inline, HelpBlock, InputGroup, Image, DropdownBu
 import '../App.css'
 import { browserHistory } from 'react-router'
 import axios from 'axios'
+import AUTH_URL from '../config/server.js'
 
 
 class DeleteItems extends Component {
@@ -44,7 +45,7 @@ class DeleteItems extends Component {
 
   handleSubmitDelete(e) {
     e.preventDefault()
-    axios.delete(`http://localhost:3000/api/items/${this.state.id}`)
+    axios.delete(`${AUTH_URL}api/items/${this.state.id}`)
       .then(response => {
         if(response.data.error){
           alert("Please fill in all required data")
