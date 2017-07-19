@@ -39,7 +39,6 @@ class Login extends Component {
       if (response.data.error){
         alert("Username or password does not exist")
       } else {
-        console.log('kittens', response.data[0].id);
         browserHistory.push('/tenents?id=' + response.data[0].id)
     }
   })

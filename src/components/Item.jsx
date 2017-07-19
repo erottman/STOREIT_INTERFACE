@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
+import { browserHistory } from 'react-router'
 import { HelpBlock, InputGroup, Table, Accordion, ListGroup, ListGroupItem, Panel, Image, DropdownButton, Grid, Row, Col, Thumbnail, Button,FormGroup , ControlLabel, FormControl } from 'react-bootstrap'
 import '../App.css'
 import ItemImg  from '../images/toaster.jpg'
 import DeleteItems from './DeleteItems'
 import axios from 'axios'
+import AUTH_URL from '../config/server.js'
 
 
 class Item extends Component {
@@ -20,6 +22,7 @@ class Item extends Component {
         description: '',
         image_url: '',
       }
+
       this.handleSubmitPut = this.handleSubmitPut.bind(this)
       this.handleBoxIdChange = this.handleBoxIdChange.bind(this)
       this.handleBoxIdentifierChange = this.handleBoxIdentifierChange.bind(this)
@@ -31,7 +34,7 @@ class Item extends Component {
   }
 
   componentDidMount() {
-   axios.get(`http://localhost:3000/api/items/${this.props.location.query.id}`)
+   axios.get(`${AUTH_URL}api/items/${this.props.location.query.id}`)
       .then(response => {
         console.log(response);
         this.setState({
@@ -54,12 +57,13 @@ class Item extends Component {
     handleSubmitPut(e) {
       console.log('put', this.state);
       e.preventDefault()
-    axios.put(`http://localhost:3000/api/items/${this.state.id}`, this.state)
+      axios.put(`${AUTH_URL}api/items/${this.state.id}`, this.state)
         .then(response => {
           if(response.data.error){
             alert("Please fill in all required data")
           }else {
-            window.location.reload()
+            browserHistory.push('/item?id=' + response.data.id)
+            // window.location.reload()
           }
         })
         .catch(err => {
@@ -67,6 +71,8 @@ class Item extends Component {
           alert("Please fill in all required data")
           })
         }
+
+
 
         handleBoxIdChange(e) {
           console.log('string', e.target.value);
