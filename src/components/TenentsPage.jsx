@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
+import { browserHistory } from 'react-router'
 import { Accordion, ListGroup, ListGroupItem, Panel, Image, DropdownButton, Grid, Row, Col, Thumbnail, Button,FormGroup , ControlLabel, FormControl } from 'react-bootstrap'
 import '../App.css'
 import ManageProfile from './ManageProfile'
@@ -102,7 +103,7 @@ class TenentsPage extends Component {
 
     const profilebutton = (
       <button>
-      <p><Button className="profilebutton" href="boxes">Manage Storage</Button>&nbsp;</p>
+      <p><Button className="profilebutton" href="/boxes">Manage Storage</Button>&nbsp;</p>
       </button>
   );
 
