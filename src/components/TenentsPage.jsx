@@ -102,7 +102,7 @@ class TenentsPage extends Component {
 
     const profilebutton = (
       <button>
-      <p><Button className="profilebutton" href="/boxes">Manage Storage</Button>&nbsp;</p>
+      <p><Button className="profilebutton" href="boxes">Manage Storage</Button>&nbsp;</p>
       </button>
   );
 

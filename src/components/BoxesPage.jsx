@@ -45,7 +45,6 @@ class BoxesPage extends Component {
   updateBoxes() {
     axios.get(`${AUTH_URL}api/boxes`)
       .then(response => {
-            console.log('update boxes',response);
         this.setState({
           boxes: response.data
         })
@@ -58,7 +57,6 @@ class BoxesPage extends Component {
       let total = 0;
       this.state.items.map(item => {
       total += parseInt(item.value)
-      console.log('value', item.value);
     })
     console.log('value', total);
     return total;
@@ -68,9 +66,7 @@ class BoxesPage extends Component {
       let total = 0;
       this.state.items.map(item => {
       total += item.quantity
-      console.log('quantity', item.quantity);
     })
-    console.log('total', total);
     return total;
   }
 
