@@ -109,9 +109,9 @@ class TenentsPage extends Component {
 
     const profileOverview = (
       <ListGroup className="profileOverview">
-        <ListGroupItem href="/facility">{this.state.facility.name} </ListGroupItem>
-        <ListGroupItem href="/boxes">Storage Unit: {this.state.unit.unit_number}  |   Total Boxes:  {this.state.boxes.length} </ListGroupItem>
-        <ListGroupItem href="/boxes">Total Items: {this.getTotalQuantity(this.state.items)}     |   Total Value: ${this.getTotalValue(this.state.items)}</ListGroupItem>
+        <Link className="facility" to="/facility"><ListGroupItem>{this.state.facility.name} </ListGroupItem></Link>
+        <Link className="boxes" to="/boxes"><ListGroupItem>Storage Unit: {this.state.unit.unit_number}  |   Total Boxes:  {this.state.boxes.length} </ListGroupItem></Link>
+        <Link className="boxes" to="/boxes"><ListGroupItem>Total Items: {this.getTotalQuantity(this.state.items)}     |   Total Value: ${this.getTotalValue(this.state.items)}</ListGroupItem></Link>
       </ListGroup>
     );
 
