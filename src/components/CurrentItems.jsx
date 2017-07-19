@@ -4,6 +4,7 @@ import { Table, ListGroup, ListGroupItem } from 'react-bootstrap'
 import '../App.css'
 import axios from 'axios'
 import { browserHistory } from 'react-router'
+import AUTH_URL from '../config/server.js'
 
 
 class CurrentItems extends Component {
@@ -16,18 +17,15 @@ class CurrentItems extends Component {
   }
 
   fetchItem(item) {
-
     browserHistory.push('/item?id=' + item.id )
-    }
+  }
 
-    componentWillReceiveProps(nextProps) {
-      console.log('should be items', nextProps);
-      this.setState({
-        items: nextProps.items
-
-      })
-    }
-
+  componentWillReceiveProps(nextProps) {
+    console.log('should be items', nextProps);
+    this.setState({
+      items: nextProps.items
+    })
+  }
 
 
   makeItemTableRow(item) {

@@ -4,6 +4,7 @@ import { Addon, Checkbox, Form, inline, HelpBlock, InputGroup, Image, DropdownBu
 import '../App.css'
 import { browserHistory } from 'react-router'
 import axios from 'axios'
+import AUTH_URL from '../config/server.js'
 
 
 class AddItems extends Component {
@@ -35,14 +36,13 @@ class AddItems extends Component {
 
   handleSubmitPost(e) {
     e.preventDefault()
-    axios.post('http://localhost:3000/api/items', this.state)
+    axios.post(`${AUTH_URL}api/items`, this.state)
       .then(response => {
         if(response.data.error){
           alert("Please fill in all required data")
         }else {
-          //   console.log('kittnes',response.data);
-          // browserHistory.push('/item?id=' + response.data.id)
-          window.location.reload()
+          this.props.updateItems()
+          // window.location.reload()
         }
       })
       .catch(err => {

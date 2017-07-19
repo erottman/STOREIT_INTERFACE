@@ -6,6 +6,7 @@ import CurrentItems from './CurrentItems'
 import AddItems from './AddItems'
 import Items  from '../images/items.png'
 import axios from 'axios'
+import AUTH_URL from '../config/server.js'
 
 
 class ItemsPage extends Component {
@@ -17,12 +18,11 @@ class ItemsPage extends Component {
         quantity: 0,
         value: 0,
       }
-
+      this.updateItems = this.updateItems.bind(this)
     }
 
   componentDidMount() {
-   //axios.get(`/api/users/${this.props.params.id}`)
-   axios.get(`http://localhost:3000/api/boxes/${this.props.location.query.id}`)
+   axios.get(`${AUTH_URL}api/boxes/${this.props.location.query.id}`)
       .then(response => {
         console.log("boxes",response.data);
         this.setState({
@@ -33,7 +33,7 @@ class ItemsPage extends Component {
         console.log('error', err);
       })
 
-  axios.get('http://localhost:3000/api/items')
+  axios.get(`${AUTH_URL}api/items`)
     .then(response => {
       console.log('items', response.data);
       console.log('id', this.props.location.query.id);
@@ -55,6 +55,17 @@ class ItemsPage extends Component {
 
     })
   }
+
+  updateItems() {
+    axios.get(`${AUTH_URL}api/items`)
+      .then(response => {
+        this.setState({
+          items: response.data
+        })
+      })
+      .catch(err => {
+      })
+    }
 
   getTotalValue() {
       let total = 0;
@@ -95,10 +106,10 @@ class ItemsPage extends Component {
   const accordionInstance = (
   <Accordion>
     <Panel header="Current Items"  defaultActiveKey="1">
-    <CurrentItems items={this.state.items} />
+    <CurrentItems  items={this.state.items} />
     </Panel>
     <Panel header="Add Items" eventKey="2">
-    <AddItems box={this.state.box} />
+    <AddItems updateItems={this.updateItems} box={this.state.box} />
     </Panel>
   </Accordion>
 );
