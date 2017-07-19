@@ -4,6 +4,7 @@ import { Checkbox, Form, inline, HelpBlock, InputGroup, Image, DropdownButton, G
 import '../App.css'
 import { browserHistory } from 'react-router'
 import axios from 'axios'
+import AUTH_URL from '../config/server.js'
 
 
 class Delete extends Component {
@@ -37,7 +38,7 @@ class Delete extends Component {
 
 handleSubmit(e) {
   e.preventDefault()
-  axios.get(`http://localhost:3000/api/boxes/${this.state.id}`)
+  axios.get(`${AUTH_URL}api/boxes/${this.state.id}`)
     .then(response => {
       console.log(response.data);
       this.setState({
@@ -57,7 +58,7 @@ handleSubmit(e) {
 
   handleSubmitDelete(e) {
     e.preventDefault()
-    axios.delete(`http://localhost:3000/api/boxes/${this.state.id}`, this.state)
+    axios.delete(`${AUTH_URL}api/boxes/${this.state.id}`, this.state)
       .then(response => {
         if(response.data.error){
           alert("Please fill in all required data")

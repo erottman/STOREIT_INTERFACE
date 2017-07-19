@@ -37,9 +37,9 @@ class Edit extends Component {
 
 handleSubmit(e) {
   e.preventDefault()
-  axios.get(`http://localhost:3000/api/boxes/${this.state.id}`)
+  axios.get(`${AUTH_URL}api/boxes/${this.state.id}`)
     .then(response => {
-      console.log(response.data);
+      console.log('does this work',response.data);
       this.setState({
         identifier: response.data.identifier,
         unit_number: response.data.unit_number,
@@ -57,7 +57,7 @@ handleSubmit(e) {
 
   handleSubmitPut(e) {
     e.preventDefault()
-    axios.put(`http://localhost:3000/api/boxes/${this.state.id}`, this.state)
+    axios.put(`${AUTH_URL}api/boxes/${this.state.id}`, this.state)
       .then(response => {
         if(response.data.error){
           alert("Please fill in all required data")
