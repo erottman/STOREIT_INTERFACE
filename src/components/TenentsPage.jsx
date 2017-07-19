@@ -18,6 +18,7 @@ class TenentsPage extends Component {
         items: [],
         value: 0,
       }
+      this.updateTenent = this.updateTenent.bind(this)
     }
 
   componentDidMount() {
@@ -65,6 +66,27 @@ class TenentsPage extends Component {
      })
      .catch(err => {
      })
+  }
+
+  updateTenent(tenant) {
+    this.setState({
+      tenent: tenant
+    })
+  }
+
+  getRefreshedData(id) {
+    axios.get(`${AUTH_URL}api/tenents/${id}`)
+       .then(response => {
+         console.log(response);
+         return response.data;
+       })
+       .then((response) => {
+         this.setState({
+           tenent: response,
+         })
+       })
+       .catch(err => {
+       })
   }
 
   getTotalValue() {
@@ -124,7 +146,7 @@ class TenentsPage extends Component {
   const accordionInstance = (
   <Accordion>
     <Panel header="Manage Profile" eventKey="1">
-    <ManageProfile tenent={this.state.tenent} />
+    <ManageProfile updateTenent={this.updateTenent} tenent={this.state.tenent} />
     </Panel>
   </Accordion>
 );

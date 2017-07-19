@@ -53,9 +53,11 @@ class ManageProfile extends Component {
       .then(response => {
         if(response.data.error){
           alert("Please fill in all required data")
-        }else {
-          window.location.reload()
+        } else {
+          this.props.updateTenent(response.data)
+          //this.props.refreshdata(this.state.id)
         }
+
       })
       .catch(err => {
         console.error(err)
