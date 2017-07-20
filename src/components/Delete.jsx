@@ -149,7 +149,7 @@ handleSubmit(e) {
               <FormControl.Feedback />
               <HelpBlock>Enter Box Id </HelpBlock>
               <Button type="submit">
-                   Review Box
+                   Review
                  </Button>
             </FormGroup>
           </form>
@@ -215,7 +215,7 @@ handleSubmit(e) {
            onChange={this.handleRoomChange.bind(this)}
            componentClass="select"
            placeholder={this.state.room}>
-           <option value="select">{this.state.room}</option>
+           <option value="select">Select</option>
            <option value="Living Room">Living Room</option>
            <option value="Kitchen">Kitchen</option>
            <option value="Dining Room">Dining Room</option>
@@ -231,7 +231,7 @@ handleSubmit(e) {
             onChange={this.handleLocationChange.bind(this)}
             componentClass="select"
             placeholder="select">
-            <option value="select">{this.state.unit_location}</option>
+            <option value="select">Select</option>
             <option value="front_left">Front Left</option>
             <option value="front_center">Front Center</option>
             <option value="front_right">Front Right</option>

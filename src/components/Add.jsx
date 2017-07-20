@@ -101,7 +101,7 @@ class Add extends Component {
           <FormControl
             type="text"
             value={this.state.identifier}
-            placeholder="box4"
+            placeholder="box5"
             onChange={this.handleIdentifierChange}
           />
         </FormGroup>
@@ -112,7 +112,7 @@ class Add extends Component {
         <FormControl
           type="text"
           value={this.state.unit_number}
-          placeholder="444"
+          placeholder="222"
           onChange={this.handleUnitChange}
         />
         <FormControl.Feedback />

@@ -54,75 +54,75 @@ class Item extends Component {
     }
 
 
-    handleSubmitPut(e) {
-      console.log('put', this.state);
-      e.preventDefault()
-      axios.put(`${AUTH_URL}api/items/${this.state.id}`, this.state)
-        .then(response => {
-          if(response.data.error){
-            alert("Please fill in all required data")
-          }else {
-            browserHistory.push('/items?id=' + this.state.box_id)
-            // browserHistory.push('/item?id=' + response.data.id)
-            // window.location.reload()
-          }
-        })
-        .catch(err => {
-          console.error(err)
+  handleSubmitPut(e) {
+    console.log('put', this.state);
+    e.preventDefault()
+    axios.put(`${AUTH_URL}api/items/${this.state.id}`, this.state)
+      .then(response => {
+        if(response.data.error){
           alert("Please fill in all required data")
-          })
+        }else {
+          browserHistory.push('/items?id=' + this.state.box_id)
+          // browserHistory.push('/item?id=' + response.data.id)
+          // window.location.reload()
         }
+      })
+      .catch(err => {
+        console.error(err)
+        alert("Please fill in all required data")
+        })
+      }
 
 
 
-        handleBoxIdChange(e) {
-          console.log('string', e.target.value);
-          this.setState({
-             box_id: e.target.value,
-             });
-          }
+  handleBoxIdChange(e) {
+    console.log('string', e.target.value);
+    this.setState({
+       box_id: e.target.value,
+       });
+    }
 
-        handleBoxIdentifierChange(e) {
-          console.log('string', e.target.value);
-          this.setState({
-            box_identifier: e.target.value,
-           });
-        }
+  handleBoxIdentifierChange(e) {
+    console.log('string', e.target.value);
+    this.setState({
+      box_identifier: e.target.value,
+     });
+  }
 
-        handleNameChange(e) {
-          console.log('string', e.target.value);
-          this.setState({
-            name: e.target.value,
-           });
-        }
+  handleNameChange(e) {
+    console.log('string', e.target.value);
+    this.setState({
+      name: e.target.value,
+     });
+  }
 
-        handleQuantityChange(e) {
-          console.log('string', e.target.value);
-          this.setState({
-            quantity: e.target.value,
-           });
-        }
+  handleQuantityChange(e) {
+    console.log('string', e.target.value);
+    this.setState({
+      quantity: e.target.value,
+     });
+  }
 
-        handleValueChange(e) {
-          console.log('string', e.target.value);
-          this.setState({
-            value: e.target.value,
-           });
-        }
+  handleValueChange(e) {
+    console.log('string', e.target.value);
+    this.setState({
+      value: e.target.value,
+     });
+  }
 
-        handleDescriptionChange(e) {
-          console.log('string', e.target.value);
-          this.setState({
-            description: e.target.value,
-           });
-        }
+  handleDescriptionChange(e) {
+    console.log('string', e.target.value);
+    this.setState({
+      description: e.target.value,
+     });
+  }
 
-        handleImageUrlChange(e) {
-          console.log('string', e.target.value);
-          this.setState({
-            image_url: e.target.value,
-           });
-        }
+  handleImageUrlChange(e) {
+    console.log('string', e.target.value);
+    this.setState({
+      image_url: e.target.value,
+     });
+  }
 
 
   render() {

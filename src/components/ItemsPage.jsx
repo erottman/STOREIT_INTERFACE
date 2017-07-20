@@ -7,6 +7,8 @@ import AddItems from './AddItems'
 import Items  from '../images/items.png'
 import axios from 'axios'
 import AUTH_URL from '../config/server.js'
+import Delete from './Delete'
+import Edit from './Edit'
 
 
 class ItemsPage extends Component {
@@ -80,6 +82,8 @@ class ItemsPage extends Component {
       .catch(err => {
       })
     }
+
+
 
   getTotalValue() {
       let total = 0;
