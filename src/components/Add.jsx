@@ -39,14 +39,12 @@ class Add extends Component {
           alert("Please fill in all required data")
         }else {
           this.props.updateBoxes()
-          // window.location.reload()
-
         }
       })
       .catch(err => {
         console.error(err)
         alert("Please fill in all required data")
-        })
+      })
     }
 
 
@@ -103,7 +101,7 @@ class Add extends Component {
           <FormControl
             type="text"
             value={this.state.identifier}
-            placeholder={this.state.identifier}
+            placeholder="box4"
             onChange={this.handleIdentifierChange}
           />
         </FormGroup>
@@ -154,8 +152,8 @@ class Add extends Component {
          <FormControl
            onChange={this.handleRoomChange.bind(this)}
            componentClass="select"
-           placeholder="Select">
-           <option value="select">Select</option>
+           placeholder="select">
+           <option value="select">Select Room</option>
            <option value="Living Room">Living Room</option>
            <option value="Kitchen">Kitchen</option>
            <option value="Dining Room">Dining Room</option>
@@ -171,7 +169,7 @@ class Add extends Component {
             onChange={this.handleLocationChange.bind(this)}
             componentClass="select"
             placeholder="select">
-            <option value="select">Select</option>
+            <option value="select">Select Location</option>
             <option value="Front Left">Front Left</option>
             <option value="Front Center">Front Center</option>
             <option value="Front Right">Front Right</option>

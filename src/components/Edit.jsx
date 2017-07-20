@@ -142,7 +142,7 @@ handleSubmit(e) {
               <FormControl
                 type="text"
                 value={this.state.id}
-                placeholder="example box2"
+                placeholder="2"
                 onChange={this.handleIdChange}
               />
               <FormControl.Feedback />
@@ -214,7 +214,7 @@ handleSubmit(e) {
            onChange={this.handleRoomChange.bind(this)}
            componentClass="select"
            placeholder={this.state.room}>
-           <option value="select">Select</option>
+           <option value="select">{this.state.room}</option>
            <option value="Living Room">Living Room</option>
            <option value="Kitchen">Kitchen</option>
            <option value="Dining Room">Dining Room</option>
@@ -230,7 +230,7 @@ handleSubmit(e) {
             onChange={this.handleLocationChange.bind(this)}
             componentClass="select"
             placeholder="select">
-            <option value="select">Select</option>
+            <option value="select">{this.state.unit_location}</option>
             <option value="Front Left">Front Left</option>
             <option value="Front Center">Front Center</option>
             <option value="Front Right">Front Right</option>
