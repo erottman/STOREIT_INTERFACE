@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import { Accordion, ListGroup, ListGroupItem, Panel, Image, DropdownButton, Grid, Row, Col, Thumbnail, Button,FormGroup , ControlLabel, FormControl } from 'react-bootstrap'
+import { Accordion, ListGroup, ListGroupItem, Panel, Image, DropdownButton, Grid, Row, Col, Thumbnail, Button,FormGroup , ControlLabel, FormControl, PanelGroup } from 'react-bootstrap'
 import '../App.css'
 import CurrentItems from './CurrentItems'
 import AddItems from './AddItems'
@@ -17,8 +17,10 @@ class ItemsPage extends Component {
         items: [],
         quantity: 0,
         value: 0,
+        activeKey:"1",
       }
       this.updateItems = this.updateItems.bind(this)
+      this.handleSelect = this.handleSelect.bind(this)
     }
 
   componentDidMount() {
@@ -70,6 +72,7 @@ class ItemsPage extends Component {
             console.log('itemMatch', itemMatch);
               this.setState({
               items: itemMatch,
+              activeKey:"1",
             })
           }
         })
@@ -94,6 +97,9 @@ class ItemsPage extends Component {
     return total;
   }
 
+  handleSelect(activeKey) {
+    this.setState({activeKey})
+  }
 
 
   render() {
@@ -115,14 +121,14 @@ class ItemsPage extends Component {
   );
 
   const accordionInstance = (
-  <Accordion>
-    <Panel header="Current Items"  defaultActiveKey="1">
-    <CurrentItems  items={this.state.items} />
-    </Panel>
-    <Panel header="Add Items" eventKey="2">
-    <AddItems updateItems={this.updateItems} box={this.state.box} />
-    </Panel>
-  </Accordion>
+    <PanelGroup activeKey={this.state.activeKey} onSelect={this.handleSelect} accordion>
+      <Panel header="Current Items"  eventKey="1">
+      <CurrentItems  items={this.state.items} />
+      </Panel>
+      <Panel header="Add Items" eventKey="2">
+      <AddItems updateItems={this.updateItems} box={this.state.box} />
+      </Panel>
+    </PanelGroup>
 );
     return (
       <div>

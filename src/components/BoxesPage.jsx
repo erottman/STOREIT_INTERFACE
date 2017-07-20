@@ -114,23 +114,7 @@ class BoxesPage extends Component {
       </Panel>
     </PanelGroup>
   );
-/*
-  <Accordion>
-    <Panel header="Current Boxes" defaultActiveKey="1">
-    <CurrentBoxes boxes={this.state.boxes} />
-    </Panel>
-    <Panel header="Add Boxes" eventKey="2" expanded={this.state.expanded}>
-    <Add updateBoxes={this.updateBoxes} />
-    </Panel>
-    <Panel header="Edit Boxes" eventKey="3" expanded={this.state.expanded}>
-    <Edit updateBoxes={this.updateBoxes} />
-    </Panel>
-    <Panel header="Delete Boxes" eventKey="4" expanded={this.state.expanded}>
-    <Delete updateBoxes={this.updateBoxes}  />
-    </Panel>
-  </Accordion>
-);
-*/
+
     return (
       <div>
       <div> {thumbnailInstance}</div>
