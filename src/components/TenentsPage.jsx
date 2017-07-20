@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { browserHistory } from 'react-router'
-import { Accordion, ListGroup, ListGroupItem, Panel, Image, DropdownButton, Grid, Row, Col, Thumbnail, Button,FormGroup , ControlLabel, FormControl } from 'react-bootstrap'
+import { Accordion, ListGroup, ListGroupItem, Panel, Image, DropdownButton, Grid, Row, Col, Thumbnail, Button,FormGroup , ControlLabel, FormControl,PanelGroup } from 'react-bootstrap'
 import '../App.css'
 import ManageProfile from './ManageProfile'
 import axios from 'axios'
@@ -18,8 +18,10 @@ class TenentsPage extends Component {
         boxes: [],
         items: [],
         value: 0,
+        activeKey: "0",
       }
       this.updateTenent = this.updateTenent.bind(this)
+      this.handleSelect = this.handleSelect.bind(this)
     }
 
   componentDidMount() {
@@ -71,7 +73,8 @@ class TenentsPage extends Component {
 
   updateTenent(tenant) {
     this.setState({
-      tenent: tenant
+      tenent: tenant,
+      activeKey: "0",
     })
   }
 
@@ -97,7 +100,9 @@ class TenentsPage extends Component {
   }
 
 
-
+  handleSelect(activeKey) {
+    this.setState({activeKey})
+  }
 
   render() {
 
@@ -131,11 +136,11 @@ class TenentsPage extends Component {
   );
 
   const accordionInstance = (
-  <Accordion>
-    <Panel header="Manage Profile" eventKey="1">
-    <ManageProfile updateTenent={this.updateTenent} tenent={this.state.tenent} />
-    </Panel>
-  </Accordion>
+    <PanelGroup activeKey={this.state.activeKey} onSelect={this.handleSelect} accordion>
+      <Panel header="Manage Profile" eventKey="1">
+      <ManageProfile updateTenent={this.updateTenent} tenent={this.state.tenent} />
+      </Panel>
+    </PanelGroup>
 );
     return (
       <div>

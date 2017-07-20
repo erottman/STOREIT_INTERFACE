@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import { Accordion, ListGroup, ListGroupItem, Panel, Image, DropdownButton, Grid, Row, Col, Thumbnail, Button,FormGroup , ControlLabel, FormControl } from 'react-bootstrap'
+import { Accordion, ListGroup, ListGroupItem, Panel, Image, DropdownButton, Grid, Row, Col, Thumbnail, Button,FormGroup , ControlLabel, FormControl, PanelGroup } from 'react-bootstrap'
 import '../App.css'
 import CurrentBoxes from './CurrentBoxes'
 import Add from './Add'
@@ -18,8 +18,10 @@ class BoxesPage extends Component {
       boxes:[],
       items:[],
       value : 0,
+      activeKey: "1",
     }
     this.updateBoxes = this.updateBoxes.bind(this)
+    this.handleSelect = this.handleSelect.bind(this)
   }
 
   componentDidMount() {
@@ -45,11 +47,16 @@ class BoxesPage extends Component {
   updateBoxes() {
     axios.get(`${AUTH_URL}api/boxes`)
       .then(response => {
+        console.log('INSIDE THEN')
         this.setState({
-          boxes: response.data
+          boxes: response.data,
+          activeKey: "1",
         })
+
       })
       .catch(err => {
+        console.log('INSIDE CATCH')
+        console.log(err)
       })
     }
 
@@ -58,7 +65,6 @@ class BoxesPage extends Component {
       this.state.items.map(item => {
       total += parseInt(item.value)
     })
-    console.log('value', total);
     return total;
   }
 
@@ -68,6 +74,10 @@ class BoxesPage extends Component {
       total += item.quantity
     })
     return total;
+  }
+
+  handleSelect(activeKey) {
+    this.setState({activeKey})
   }
 
 
@@ -89,22 +99,38 @@ class BoxesPage extends Component {
   );
 
   const accordionInstance = (
-
+    <PanelGroup activeKey={this.state.activeKey} onSelect={this.handleSelect} accordion>
+      <Panel header="Current Boxes" eventKey="1">
+      <CurrentBoxes boxes={this.state.boxes} />
+      </Panel>
+      <Panel header="Add Boxes" eventKey="2">
+      <Add updateBoxes={this.updateBoxes} />
+      </Panel>
+      <Panel header="Edit Boxes" eventKey="3">
+      <Edit updateBoxes={this.updateBoxes} />
+      </Panel>
+      <Panel header="Delete Boxes" eventKey="4">
+      <Delete updateBoxes={this.updateBoxes}  />
+      </Panel>
+    </PanelGroup>
+  );
+/*
   <Accordion>
-    <Panel header="Current Boxes" defaultActiveKey="1" >
+    <Panel header="Current Boxes" defaultActiveKey="1">
     <CurrentBoxes boxes={this.state.boxes} />
     </Panel>
-    <Panel header="Add Boxes" eventKey="2">
+    <Panel header="Add Boxes" eventKey="2" expanded={this.state.expanded}>
     <Add updateBoxes={this.updateBoxes} />
     </Panel>
-    <Panel header="Edit Boxes" eventKey="3">
+    <Panel header="Edit Boxes" eventKey="3" expanded={this.state.expanded}>
     <Edit updateBoxes={this.updateBoxes} />
     </Panel>
-    <Panel header="Delete Boxes" eventKey="4">
-    <Delete updateBoxes={this.updateBoxes} />
+    <Panel header="Delete Boxes" eventKey="4" expanded={this.state.expanded}>
+    <Delete updateBoxes={this.updateBoxes}  />
     </Panel>
   </Accordion>
 );
+*/
     return (
       <div>
       <div> {thumbnailInstance}</div>
