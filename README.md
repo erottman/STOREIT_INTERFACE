@@ -5,7 +5,18 @@ StoreIt is a mobile first app ready to assist with the tedious task of organizin
 
 # DEMO
 
--STOREit DEMO = "https://www.dropbox.com/s/xzvpwjb8wbgvg95/STOREitDEMO.mov?dl=0";
+![alt tag](./src/images/STOREit.png)
+
+- Login: Brandy
+- Password: brandy
+- DEMO: "https://www.dropbox.com/s/xzvpwjb8wbgvg95/STOREitDEMO.mov?dl=0";
+
+# Live Site
+
+
+- Login: Brandy
+- Password: brandy
+- LINK: "https://storeitmanager.herokuapp.com/"
 
 ## Technologies Used
 
