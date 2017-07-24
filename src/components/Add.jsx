@@ -11,13 +11,13 @@ class Add extends Component {
   constructor(props) {
     super(props)
     this.state = {
-        identifier:'',
-        unit_number: '',
-        date_packed: '',
-        date_stored: '',
-        room: '',
-        unit_location: '',
-        description: '',
+        identifier:'box5',
+        unit_number: '222',
+        date_packed: '05-05-17',
+        date_stored: '05-10-17',
+        room: 'seahawks room',
+        unit_location: 'Middle Left',
+        description: 'Everything from my favorite seahawks room',
 
   }
     this.handleSubmitPost = this.handleSubmitPost.bind(this)
