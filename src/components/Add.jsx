@@ -101,7 +101,7 @@ class Add extends Component {
           <FormControl
             type="text"
             value={this.state.identifier}
-            placeholder="box5"
+            placeholder={this.state.indentifier}
             onChange={this.handleIdentifierChange}
           />
         </FormGroup>
@@ -112,7 +112,7 @@ class Add extends Component {
         <FormControl
           type="text"
           value={this.state.unit_number}
-          placeholder="222"
+          placeholder={this.state.unit_number}
           onChange={this.handleUnitChange}
         />
         <FormControl.Feedback />
@@ -127,7 +127,7 @@ class Add extends Component {
          <FormControl
            type="text"
            value={this.state.date_packed}
-           placeholder="05-05-17"
+           placeholder={this.state.date_packed}
            onChange={this.handlePackedChange}
          />
        </InputGroup>
@@ -141,7 +141,7 @@ class Add extends Component {
         <FormControl
           type="text"
           value={this.state.date_stored}
-          placeholder="05-10-17"
+          placeholder={this.state.date_stored}
           onChange={this.handleStoredChange}
         />
       </InputGroup>
@@ -188,7 +188,7 @@ class Add extends Component {
        <FormControl
          componentClass="textarea"
          value={this.state.description}
-         placeholder="Add a helpful description of the items going into the box"
+         placeholder={this.state.description}
          onChange={this.handleDescriptionChange}
        />
      </FormGroup>
