@@ -5,7 +5,7 @@ StoreIt is a mobile first app ready to assist with the tedious task of organizin
 
 # DEMO
 
-![alttag](https://www.dropbox.com/s/xzvpwjb8wbgvg95/STOREitDEMO.mov?dl=0)
+![alttag]("https://www.dropbox.com/s/xzvpwjb8wbgvg95/STOREitDEMO.mov?dl=0")
 
 ## Technologies Used
 
