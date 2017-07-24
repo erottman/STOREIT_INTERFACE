@@ -176,7 +176,6 @@ class DeleteItems extends Component {
         </Button>
 
     </form>
-
     );
   }
 };

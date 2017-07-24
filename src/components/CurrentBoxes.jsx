@@ -12,7 +12,6 @@ class CurrentBoxes extends Component {
     super(props)
     this.state = {
       boxes:[],
-
     }
     this.fetchBox = this.fetchBox.bind(this)
     this.sortTable = this.sortTable.bind(this)
@@ -21,14 +20,13 @@ class CurrentBoxes extends Component {
   fetchBox(box) {
     console.log('kittnes', box);
     browserHistory.push('/items?id=' + box.id )
-    }
+  }
 
 
   componentWillReceiveProps(nextProps) {
     console.log('should be items', nextProps);
     this.setState({
       boxes: nextProps.boxes
-
     })
   }
 
@@ -58,9 +56,8 @@ sortTable(column) {
     })
     this.setState({
       boxes: sortBoxes
-    })
+  })
 }
-
 
 
 render() {
@@ -82,7 +79,6 @@ render() {
     )
   }
 }
-
 
 
 

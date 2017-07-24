@@ -42,12 +42,11 @@ class BoxesPage extends Component {
       })
       .catch(err => {
       })
-  }
+    }
 
   updateBoxes() {
     axios.get(`${AUTH_URL}api/boxes`)
       .then(response => {
-        console.log('INSIDE THEN')
         this.setState({
           boxes: response.data,
           activeKey: "1",
@@ -55,7 +54,6 @@ class BoxesPage extends Component {
 
       })
       .catch(err => {
-        console.log('INSIDE CATCH')
         console.log(err)
       })
     }

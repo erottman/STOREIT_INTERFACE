@@ -15,9 +15,10 @@ class Header extends Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
+            <Link className="nav-link" to='/'>Log Out</Link>
           </Nav>
           <Nav pullRight>
-      
+
           </Nav>
         </Navbar.Collapse>
       </Navbar>

@@ -13,11 +13,11 @@ class AddItems extends Component {
     this.state = {
       box_id: '',
       box_identifier: '',
-      name: '',
-      quantity:'',
-      value:'',
-      description: '',
-      image_url: '',
+      name: 'Richard Sherman Signed Football',
+      quantity: 1,
+      value: 3000,
+      description: 'Signed in 2014 at the Cardinals Game when we won by 30 points',
+      image_url: 'https://images.pristineauction.com/21/210340/main_1-Richard-Sherman-Signed-Football-JSA-COA-PristineAuction.com.jpg',
     }
     this.handleSubmitPost = this.handleSubmitPost.bind(this)
     this.handleNameChange = this.handleNameChange.bind(this)

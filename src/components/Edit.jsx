@@ -10,7 +10,7 @@ class Edit extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      id:'',
+      id:2,
       identifier:'',
       unit_number: '',
       date_packed: '',
@@ -31,8 +31,6 @@ class Edit extends Component {
   this.handleLocationChange = this.handleLocationChange.bind(this)
   this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
 }
-
-
 
 
 handleSubmit(e) {
@@ -74,7 +72,6 @@ handleSubmit(e) {
 
 
     handleIdChange(e) {
-      console.log('string', e.target.value);
       this.setState({
         id: e.target.value,
        });
@@ -82,49 +79,42 @@ handleSubmit(e) {
 
 
   handleIdentifierChange(e) {
-    console.log('string', e.target.value);
     this.setState({
       identifier: e.target.value,
      });
   }
 
   handleUnitChange(e) {
-    console.log('string', e.target.value);
     this.setState({
       unit_number: e.target.value,
      });
   }
 
   handlePackedChange(e) {
-    console.log('string', e.target.value);
     this.setState({
       date_packed: e.target.value,
      });
   }
 
   handleStoredChange(e) {
-    console.log('string', e.target.value);
     this.setState({
       date_stored: e.target.value,
      });
   }
 
   handleRoomChange(e) {
-    console.log('string', e.target.value);
     this.setState({
       room: e.target.value,
      });
   }
 
   handleLocationChange(e) {
-    console.log('string', e.target.value);
     this.setState({
       unit_location: e.target.value,
      });
   }
 
   handleDescriptionChange(e) {
-    console.log('string', e.target.value);
     this.setState({
       description: e.target.value,
      });
@@ -142,7 +132,7 @@ handleSubmit(e) {
               <FormControl
                 type="text"
                 value={this.state.id}
-                placeholder="2"
+                placeholder={this.state.id}
                 onChange={this.handleIdChange}
               />
               <FormControl.Feedback />

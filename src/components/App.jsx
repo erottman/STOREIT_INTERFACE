@@ -67,13 +67,13 @@ class App extends Component {
     return (
       <div>
         { this.props.children
-          ? <div>
+        ? <div>
             <Header numberOfItems={this.state.numberOfItems} isLoggedIn={this.state.isLoggedIn}/>
             {React.cloneElement(this.props.children, {...this.state, addUser: this.addUser})}
+        </div>
+          : <div className="homepage">
+            {homepage}
           </div>
-          :  <div className="homepage">
-              {homepage}
-            </div>
         }
       </div>
     )

@@ -11,7 +11,7 @@ class Delete extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      id:'',
+      id: 2,
       identifier:'',
       unit_number: '',
       date_packed: '',
@@ -32,8 +32,6 @@ class Delete extends Component {
   this.handleLocationChange = this.handleLocationChange.bind(this)
   this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
 }
-
-
 
 
 handleSubmit(e) {
@@ -143,7 +141,7 @@ handleSubmit(e) {
               <FormControl
                 type="text"
                 value={this.state.id}
-                placeholder="2"
+                placeholder={this.state.id}
                 onChange={this.handleIdChange}
               />
               <FormControl.Feedback />
@@ -215,7 +213,7 @@ handleSubmit(e) {
            onChange={this.handleRoomChange.bind(this)}
            componentClass="select"
            placeholder={this.state.room}>
-           <option value="select">Select</option>
+           <option value="select">{this.state.room}</option>
            <option value="Living Room">Living Room</option>
            <option value="Kitchen">Kitchen</option>
            <option value="Dining Room">Dining Room</option>
@@ -231,7 +229,7 @@ handleSubmit(e) {
             onChange={this.handleLocationChange.bind(this)}
             componentClass="select"
             placeholder="select">
-            <option value="select">Select</option>
+            <option value="select">{this.state.unit_location}</option>
             <option value="front_left">Front Left</option>
             <option value="front_center">Front Center</option>
             <option value="front_right">Front Right</option>
@@ -244,7 +242,6 @@ handleSubmit(e) {
           </FormControl>
         </FormGroup>
 
-
        <FormGroup controlId="formControlsTextarea">
        <ControlLabel>Description</ControlLabel>
        <FormControl
@@ -253,13 +250,13 @@ handleSubmit(e) {
          placeholder={this.state.description}
          onChange={this.handleDescriptionChange}
        />
-     </FormGroup>
-     <Button type="submit">
+      </FormGroup>
+        <Button type="submit">
           Delete Box
         </Button>
-</form>
-</div>
-</div>
+        </form>
+      </div>
+    </div>
     );
   }
 };
